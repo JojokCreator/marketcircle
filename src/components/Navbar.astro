@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+import Button from "./reusable/Button.astro";
+import { Icon } from "astro-icon/components";
+import logo from "../assets/logo.svg";
+
+const menu = [
+  {
+    Product: {
+      link: "/product",
+      values: [
+        { text: "Verify Anywhere", link: "/anywhere" },
+        { text: "KYC", link: "/kyc" },
+        { text: "AML & PEP", link: "/aml-and-peps" },
+      ],
+    },
+  },
+  {
+    Solutions: {
+      link: "/solutions",
+      values: [
+        { text: "Legal", link: "/legal" },
+        { text: "Property", link: "/property" },
+        { text: "Telecommunications", link: "/telecommunications" },
+        { text: "Finance", link: "/finance" },
+        { text: "Online Gambling", link: "/online-gambling" },
+      ],
+    },
+  },
+  {
+    Resources: {
+      link: "/blog",
+      values: [
+        { text: "Case Studies", link: "/studies" },
+        { text: "White Papers", link: "/white-papers" },
+        { text: "Api Docs", link: "/docs" },
+        { text: "Blog", link: "/blog" },
+        { text: "FAQ", link: "/faq" },
+      ],
+    },
+  },
+  {
+    Pricing: {
+      link: "/about-us",
+      values: [{ text: "About Us", link: "/about-us" }],
+    },
+  },
+  {
+    Contact: {
+      link: "/about-us",
+      values: [{ text: "About Us", link: "/about-us" }],
+    },
+  },
+];
+---
+
+<header class="w-screen">
+  <nav
+    class="flex flex-wrap max-w-7xl mx-auto
+       items-center
+       justify-between
+       w-full
+       py-4
+       lg:py-0
+       px-4
+       text-lg text-gray-700
+       bg-white"
+  >
+    <div class="z-[50]">
+      <a href="/">
+        <Icon name="logo" size={40} />
+      </a>
+    </div>
+    <div class="lg:hidden">
+      <button
+        id="hamburgerToggle"
+        aria-label="Toggle Hamburger Menu"
+        class="relative group mx-6"
+      >
+        <div
+          class="relative flex overflow-hidden items-center justify-end w-[50px] h-[50px] transform transition-all ring-0 ring-gray-300 ring-opacity-30 duration-200"
+        >
+          <div
+            class="flex flex-col justify-between w-[25px] h-[25px] transform transition-all duration-300 origin-center overflow-hidden"
+          >
+            <div
+              class="bg-sky-950 h-[3px] w-9 transform transition-all duration-300 origin-left group-aria-expanded:translate-y-7 delay-100"
+            >
+            </div>
+            <div
+              class="bg-sky-950 h-[3px] w-9 rounded transform transition-all duration-300 group-aria-expanded:translate-y-6 delay-75"
+            >
+            </div>
+            <div
+              class="bg-sky-950 h-[3px] w-9 transform transition-all duration-300 origin-left group-aria-expanded:translate-y-6"
+            >
+            </div>
+
+            <div
+              class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-aria-expanded:translate-x-0 flex w-0 group-aria-expanded:w-12"
+            >
+              <div
+                class="absolute bg-sky-950 h-[3px] w-7 transform transition-all duration-500 rotate-0 delay-300 group-aria-expanded:rotate-45"
+              >
+              </div>
+              <div
+                class="absolute bg-sky-950 h-[3px] w-7 transform transition-all duration-500 -rotate-0 delay-300 group-aria-expanded:-rotate-45"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div
+      class="translate-x-full hidden lg:shadow-none lg:translate-x-0 absolute w-screen top-20 left-0 lg:w-auto lg:static lg:flex lg:items-center bg-white z-50 transition-all duration-500 ease-in-out shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+      id="menu"
+    >
+      <ul
+        class="max-w-6xl mx-auto flex flex-col lg:flex-row h-fit w-full items-center justify-evenly py-4 gap-2 px-2"
+      >
+        {
+          menu.map((item) => (
+            <li class="group menu relative cursor-pointer py-2">
+              <div class="flex items-center justify-center lg:justify-between space-x-2 px-2 xl:px-4">
+                <a
+                  href={Object.values(item)[0].link}
+                  class="item my-2 py-2 text-lg text-sky-950 hover:text-blue-500 transition duration-300 ease-in-out font-bold"
+                >
+                  {Object.keys(item)}
+                </a>
+                <span>
+                  <Icon name="chevronDown" />
+                </span>
+              </div>
+              <ul class="dropdown max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-14 z-50 min-w-48 w-fit flex-col bg-white py-1 text-gray-800 shadow-xl lg:group-hover:flex group-aria-expanded-within:flex">
+                {Object.values(item)[0].values.map(
+                  (subItem: { text: string; link: string }) => (
+                    <a
+                      href={subItem.link}
+                      class="px-2 my-0.5 block whitespace-nowrap border-b border-white py-1 text-lg font-normal text-gray-500 hover:bg-blue-500 hover:text-white"
+                    >
+                      {subItem.text}
+                    </a>
+                  )
+                )}
+              </ul>
+            </li>
+          ))
+        }
+        <li>
+          <Button
+            buttonText="Sign In"
+            link="https://dashboard.lemverify.io/#/signin"
+            width="w-32"
+          />
+        </li>
+        <li>
+          <Button
+            buttonText="Start Now"
+            link="https://dashboard.lemverify.io/#/signup"
+            width="w-32"
+          />
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.querySelectorAll(".item").forEach((ahref) => {
+    if (window.innerWidth < 1024) {
+      // Add event parameter to the event listener function
+      ahref.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+    }
+  });
+  document.querySelectorAll(".group.menu").forEach((dropdown) => {
+    dropdown.addEventListener("click", () => {
+      const currentDropdown = dropdown.querySelector(".dropdown");
+      const allDropdowns = document.querySelectorAll(".dropdown");
+
+      allDropdowns.forEach((dropdown) => {
+        if (dropdown !== currentDropdown) {
+          dropdown.classList.remove("max-h-72");
+        }
+      });
+      currentDropdown!.classList.toggle("max-h-72");
+    });
+  });
+
+  document.getElementById("hamburgerToggle")!.addEventListener("click", () => {
+    const hamburgerToggle = document.getElementById("hamburgerToggle")!;
+    const menu = document.getElementById("menu")!;
+    const isExpanded = hamburgerToggle.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      menu.classList.add("translate-x-full");
+      setTimeout(() => {
+        menu.classList.add("hidden");
+      }, 200);
+    } else {
+      menu.classList.remove("hidden");
+      setTimeout(() => {
+        menu.classList.remove("translate-x-full");
+      }, 200);
+    }
+    hamburgerToggle.setAttribute("aria-expanded", String(!isExpanded));
+  });
+</script>

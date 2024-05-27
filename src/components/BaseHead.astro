@@ -1,0 +1,83 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+let path = Astro.url.pathname;
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts.ts";
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  metaImage?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const {
+  metaTitle,
+  metaDescription,
+  metaImage = "/blog-placeholder-1.jpg",
+} = Astro.props;
+
+let title = "";
+if (path === "/") {
+  title = `Know Your Customer (KYC) Solutions | ${SITE_TITLE}`;
+} else {
+  title = metaTitle
+    ? `${metaTitle} | ${SITE_TITLE}`.trim()
+    : path
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+        .split("/")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .filter((p) => p !== "")
+        .join(" | ")
+        .replaceAll("%20", " ") +
+      " | " +
+      SITE_TITLE.trim();
+}
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<!-- <link
+  rel="preload"
+  href="/fonts/atkinson-regular.woff"
+  as="font"
+  type="font/woff"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/atkinson-bold.woff"
+  as="font"
+  type="font/woff"
+  crossorigin
+/> -->
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={metaDescription} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={new URL(metaImage, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={metaDescription} />
+<meta property="twitter:image" content={new URL(metaImage, Astro.url)} />
