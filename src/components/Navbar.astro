@@ -130,7 +130,10 @@ const menu = [
                   {Object.keys(item)}
                 </a>
                 <span>
-                  <Icon name="chevronDown" />
+                  <Icon
+                    name="chevronDown"
+                    class="group-aria-expanded-within:rotate-180 group-hover:rotate-180 transition-transform ease-in-out duration-300"
+                  />
                 </span>
               </div>
               <ul class="dropdown max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-14 z-50 min-w-48 w-fit flex-col bg-white py-1 text-gray-800 shadow-xl lg:group-hover:flex group-aria-expanded-within:flex">
