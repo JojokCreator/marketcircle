@@ -1,7 +1,62 @@
 ---
+import ImageText from "../components/reusable/ImageText.astro";
 import Layout from "../layouts/Layout.astro";
+import hero from "../assets/hero.webp";
+import Button from "../components/reusable/Button.astro";
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/logos/*.{jpeg,jpg,png,svg,webp}",
+);
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="h-screen"></main>
+<Layout>
+	<ImageText first={true} title="Get Organized, Be Productive!" imageSide="right" image={hero}>
+		<p class="text-lg sm:text-xl/8">
+			Has running your business taken over? We get it! From juggling prospects to tracking sales to
+			keeping client commitments, it gets overwhelming. <span class="font-bold">Enter Daylite!</span
+			>
+		</p>
+		<Button
+			buttonText="Start Free Trial"
+			,
+			link="/signup/"
+			,
+			type="filled"
+			,
+			class="my-6 w-52 py-5 text-xl lg:my-0"
+			,
+		/>
+		<p class="text-sm sm:text-base">
+			<Icon name="apple" class="mr-2 mb-1 inline" /> Only for Mac, iPhone, and iPad
+		</p>
+	</ImageText>
+	<div class="bg-background-light-hover w-screen">
+		<div
+			class="mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 p-4 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
+		>
+			<p class="text-sm sm:text-base">Featured on top Apple & business news sources:</p>
+			<div class="flex grow flex-wrap items-center justify-center gap-4 sm:justify-between">
+				{
+					Object.keys(imageModules).map(async (image) => {
+						const imageSrc = await imageModules[image]();
+						return (
+							<div class="h-5 w-auto sm:h-7">
+								<Picture
+									sizes="(max-width 768px) 50vw, (max-width 1130px) 25vw, 300px"
+									widths={[200, 400, 800]}
+									class="h-full w-full object-contain"
+									formats={["avif", "webp"]}
+									fallbackFormat="jpeg"
+									src={imageSrc.default}
+									alt={image}
+								/>
+							</div>
+						);
+					})
+				}
+			</div>
+		</div>
+	</div>
 </Layout>

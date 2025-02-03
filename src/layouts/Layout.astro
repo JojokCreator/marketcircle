@@ -2,7 +2,8 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import "../styles/globals.css";
+import "../styles/global.css";
+
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts.ts";
 let path = Astro.url.pathname;
 const { metaTitle, metaDescription, metaImage } = Astro.props;
@@ -36,7 +37,7 @@ if (path === "/" || path === "/en/") {
 			metaImage={metaImage}
 		/>
 	</head>
-	<body class="text-headline">
+	<body class="text-sans text-text-primary">
 		<Navbar />
 		<slot />
 		<Footer />
