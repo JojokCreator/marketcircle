@@ -3,38 +3,35 @@
 // all pages through the use of the <BaseHead /> component.
 let path = Astro.url.pathname;
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts.ts";
+// import montserratWoff2 from "@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url";
 
 interface Props {
-  metaTitle: string;
-  metaDescription: string;
-  metaImage?: string;
+	metaTitle: string;
+	metaDescription: string;
+	metaImage?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  metaTitle,
-  metaDescription,
-  metaImage = "/blog-placeholder-1.jpg",
-} = Astro.props;
+const { metaTitle, metaDescription, metaImage = "/blog-placeholder-1.jpg" } = Astro.props;
 
 let title = "";
 if (path === "/") {
-  title = `Placeholder | ${SITE_TITLE}`;
+	title = `Placeholder | ${SITE_TITLE}`;
 } else {
-  title = metaTitle
-    ? `${metaTitle} | ${SITE_TITLE}`.trim()
-    : path
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-        .split("/")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .filter((p) => p !== "")
-        .join(" | ")
-        .replaceAll("%20", " ") +
-      " | " +
-      SITE_TITLE.trim();
+	title = metaTitle
+		? `${metaTitle} | ${SITE_TITLE}`.trim()
+		: path
+				.split("-")
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.join(" ")
+				.split("/")
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.filter((p) => p !== "")
+				.join(" | ")
+				.replaceAll("%20", " ") +
+			" | " +
+			SITE_TITLE.trim();
 }
 ---
 
@@ -45,6 +42,7 @@ if (path === "/") {
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
+<!-- <link rel="preload" as="font" type="font/woff2" href={montserratWoff2} crossorigin="anonymous" /> -->
 <!-- <link
   rel="preload"
   href="/fonts/atkinson-regular.woff"
