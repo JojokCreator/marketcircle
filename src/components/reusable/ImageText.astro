@@ -1,0 +1,54 @@
+---
+import { Picture } from "astro:assets";
+import type { Props as ButtonProps } from "./Button.astro";
+import Button from "./Button.astro";
+
+interface Props {
+	title: string;
+	image: ImageMetadata;
+	imageSide?: "left" | "right";
+	button?: ButtonProps | false;
+	first: boolean;
+}
+const { title, image, imageSide = "left", button, first = false } = Astro.props;
+---
+
+<section class={`mx-auto max-w-7xl ${first ? "mt-24 sm:mt-14" : "my-8 sm:my-32"}`}>
+	<div class={`md:flex items-center ${imageSide === "left" ? "flex-row-reverse" : ""}`}>
+		<div
+			class={`px-4 xl:px-0 md:w-2/3 h-full ${
+				imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12"
+			} flex flex-col justify-between gap-4 sm:gap-8`}
+		>
+			{
+				first ? (
+					<h1 class="text-4xl/12 font-bold sm:text-6xl/18">{title}</h1>
+				) : (
+					<h2 class="text-2xl/10 font-bold sm:text-3xl/16">{title}</h2>
+				)
+			}
+			<slot />
+			{
+				button && button.link && (
+					<Button
+						type={button.type}
+						link={button.link}
+						buttonText={button.buttonText}
+						class="w-72"
+					/>
+				)
+			}
+		</div>
+		<div class="break-right mx-auto mt-4 md:mt-2 md:w-full">
+			<Picture
+				src={image}
+				alt={title}
+				sizes="(max-width: 640px) 100vw, 400w"
+				formats={["avif", "webp"]}
+				fallbackFormat="jpg"
+				widths={[400, 800, 1200]}
+				class="h-full w-full rounded-lg object-cover"
+			/>
+		</div>
+	</div>
+</section>

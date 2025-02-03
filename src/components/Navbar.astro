@@ -1,48 +1,102 @@
 ---
-import { Image } from "astro:assets";
 import Button from "./reusable/Button.astro";
 import { Icon } from "astro-icon/components";
-import logo from "../assets/logo.svg";
 
-const menu = [
+interface MenuItem {
+	link?: string;
+	values?: (
+		| { text: string; link: string }
+		| { title: string; icon?: string; values: { text: string; link: string }[] }
+	)[];
+}
+
+const menu: { [key: string]: MenuItem }[] = [
 	{
 		"Why Daylite": {
 			link: "",
-			values: [{ text: "Anywhere", link: "/anywhere" }],
+			values: [
+				{
+					title: "Do Big Things",
+					icon: "🌞",
+					values: [
+						{ text: "What Makes Daylite Different", link: "/what-makes-daylite-different" },
+						{ text: "Daylite CRM", link: "/daylite-crm" },
+						{ text: "Daylite Sales", link: "/daylite-sales" },
+						{ text: "Daylite Projects", link: "/daylite-projects" },
+					],
+				},
+				{
+					title: "More",
+					icon: "🔵",
+					values: [
+						{ text: "Feature List", link: "/feature-list" },
+						{ text: "What's New", link: "/whats-new" },
+						{ text: "Happy Customers", link: "/happy-customers" },
+						{ text: "Industries", link: "/industries" },
+					],
+				},
+			],
 		},
 	},
 	{
 		Pricing: {
-			link: "/solutions",
-			values: [],
+			link: "/pricing",
 		},
 	},
 	{
 		Resources: {
 			link: "",
 			values: [
-				{ text: "Case Studies", link: "/studies" },
-				{ text: "White Papers", link: "/white-papers" },
+				{
+					title: "Education",
+					icon: "🔗",
+					values: [
+						{ text: "Learn Daylight", link: "/schedule-demo" },
+						{ text: "Webinars", link: "/daylite-coaches" },
+						{ text: "iOSXpert Daylite Academy", link: "/integrations" },
+						{ text: "Blog", link: "/blog" },
+					],
+				},
+				{
+					title: "Connect",
+					icon: "🔗",
+					values: [
+						{ text: "Schedule a Demo", link: "/schedule-demo" },
+						{ text: "Daylite Coaches", link: "/daylite-coaches" },
+						{ text: "Integrations & Add-ons", link: "/integrations" },
+					],
+				},
+				{
+					title: "Support",
+					icon: "🛟",
+					values: [
+						{ text: "Download", link: "/download" },
+						{ text: "Help Center", link: "/help-center" },
+						{ text: "Developer & API Docs", link: "/developer-api-docs" },
+						{ text: "Daylite Status", link: "/status" },
+						{ text: "Billings Pro Status", link: "/billings-status" },
+						{ text: "Contact Us", link: "/contact" },
+					],
+				},
 			],
 		},
 	},
 ];
 ---
 
-<header class="w-screen">
+<header class="fixed top-0 left-0 z-[999] w-screen bg-white/90 backdrop-blur-xl">
 	<nav
-		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between bg-white px-4 py-4 text-lg text-gray-700 lg:py-0"
+		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between px-4 py-2 text-lg text-gray-700 lg:py-0"
 	>
-		<div class="z-[50]">
-			<a href="/">
-				<Icon name="logo" size={40} />
-			</a>
-		</div>
+		<a href="/" aria-label="Home Page" class="flex">
+			<Icon name="logo" class="h-8 w-auto lg:h-10" />
+		</a>
 		<div class="lg:hidden">
 			<div
 				role="button"
 				id="hamburgerToggle"
 				aria-label="Toggle Hamburger Menu"
+				aria-expanded="false"
 				class="group relative mx-6"
 			>
 				<div
@@ -52,27 +106,26 @@ const menu = [
 						class="flex h-[25px] w-[25px] origin-center transform flex-col justify-between overflow-hidden transition-all duration-300"
 					>
 						<div
-							class="h-[3px] w-9 origin-left transform bg-sky-950 transition-all delay-100 duration-300 group-aria-expanded:translate-y-7"
+							class="bg-text-primary h-[3px] w-9 origin-left transform transition-all delay-100 duration-300 group-aria-expanded:translate-y-7"
 						>
 						</div>
 						<div
-							class="h-[3px] w-9 transform rounded bg-sky-950 transition-all delay-75 duration-300 group-aria-expanded:translate-y-6"
+							class="bg-text-primary h-[3px] w-9 transform rounded transition-all delay-75 duration-300 group-aria-expanded:translate-y-6"
 						>
 						</div>
 						<div
-							class="h-[3px] w-9 origin-left transform bg-sky-950 transition-all duration-300 group-aria-expanded:translate-y-6"
+							class="bg-text-primary h-[3px] w-9 origin-left transform transition-all duration-300 group-aria-expanded:translate-y-6"
 						>
 						</div>
-
 						<div
 							class="absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition-all duration-500 group-aria-expanded:w-12 group-aria-expanded:translate-x-0"
 						>
 							<div
-								class="absolute h-[3px] w-7 rotate-0 transform bg-sky-950 transition-all delay-300 duration-500 group-aria-expanded:rotate-45"
+								class="bg-text-primary absolute h-[3px] w-7 rotate-0 transform transition-all delay-300 duration-500 group-aria-expanded:rotate-45"
 							>
 							</div>
 							<div
-								class="absolute h-[3px] w-7 -rotate-0 transform bg-sky-950 transition-all delay-300 duration-500 group-aria-expanded:-rotate-45"
+								class="bg-text-primary absolute h-[3px] w-7 -rotate-0 transform transition-all delay-300 duration-500 group-aria-expanded:-rotate-45"
 							>
 							</div>
 						</div>
@@ -81,54 +134,106 @@ const menu = [
 			</div>
 		</div>
 		<div
-			class="absolute top-20 left-0 z-50 hidden w-screen translate-x-full bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all duration-500 ease-in-out lg:static lg:flex lg:w-auto lg:translate-x-0 lg:items-center lg:shadow-none"
+			class="absolute top-16 left-0 z-50 hidden max-h-0 w-screen grow overflow-clip bg-white transition-all duration-500 ease-in-out lg:static lg:flex lg:max-h-96 lg:w-auto lg:items-center lg:overflow-visible lg:bg-transparent lg:shadow-none"
 			id="menu"
 		>
 			<ul
-				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 py-4 lg:flex-row"
+				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 py-4 lg:flex-row lg:justify-center lg:py-0"
 			>
 				{
-					menu.map((item) => (
-						<li class="menu group relative cursor-pointer py-2">
-							<div class="flex items-center justify-center space-x-2 px-2 lg:justify-between xl:px-4">
-								<a
-									href={Object.values(item)[0].link}
-									class="item my-2 py-2 text-lg font-bold text-sky-950 transition duration-300 ease-in-out hover:text-blue-500"
-								>
-									{Object.keys(item)}
-								</a>
-								<span>
-									<Icon
-										name="chevronDown"
-										class="transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded-within:rotate-180"
-									/>
-								</span>
-							</div>
-							<ul class="dropdown top-14 z-50 h-fit max-h-0 w-fit min-w-48 flex-col overflow-hidden bg-white py-1 text-gray-800 shadow-xl transition-all duration-500 ease-in-out group-aria-expanded-within:flex lg:absolute lg:hidden lg:max-h-fit lg:overflow-visible lg:group-hover:flex">
-								{Object.values(item)[0].values.map((subItem: { text: string; link: string }) => (
-									<a
-										href={subItem.link}
-										class="my-0.5 block border-b border-white px-2 py-1 text-lg font-normal whitespace-nowrap text-gray-500 hover:bg-blue-500 hover:text-white"
-									>
-										{subItem.text}
-									</a>
-								))}
-							</ul>
-						</li>
-					))
+					menu.map((item, index) => {
+						const key = Object.keys(item)[0];
+						const value = item[key];
+						return (
+							<li
+								class="menu group border-background-light-hover w-full cursor-pointer border-b bg-white py-2 lg:w-auto lg:border-transparent"
+								aria-haspopup={!!value.values}
+							>
+								<div class="flex items-center justify-center space-x-2 px-2 lg:justify-between xl:px-4">
+									{value.link ? (
+										<a
+											href={value.link}
+											class="item my-2 py-2 text-lg font-medium whitespace-nowrap"
+										>
+											{key}
+											<div class="bg-orange mt-1.5 h-[3px] w-0 transition-all duration-500 group-hover:w-full" />
+										</a>
+									) : (
+										<span class="item my-2 py-2 text-lg font-medium whitespace-nowrap">
+											{key}
+											{value.values && (
+												<Icon
+													name="chevronDown"
+													class="inline transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180"
+												/>
+											)}
+											<div class="bg-orange mt-1.5 h-[3px] w-0 transition-all duration-500 group-hover:w-full" />
+										</span>
+									)}
+								</div>
+								{value.values && (
+									<ul class="dropdown text-text-secondary divide-background-light-hover group-aria-expanded:max-h-[999px ease-in-out] top-14 z-50 mx-auto h-fit max-h-0 w-full min-w-52 flex-col overflow-hidden bg-white py-1 transition-all duration-500 lg:absolute lg:top-12 lg:left-1/2 lg:my-8 lg:hidden lg:max-h-fit lg:w-fit lg:-translate-x-1/2 lg:flex-row lg:divide-x lg:overflow-visible lg:bg-white lg:py-4 lg:shadow-xl lg:group-hover:flex">
+										{value.values.map((subItem, subIndex) => (
+											<li class="lg:py-2">
+												{"text" in subItem ? (
+													<a
+														href={subItem.link}
+														class="hover:bg-background-light-hover my-0.5 block px-2 py-1 text-lg font-normal whitespace-nowrap"
+													>
+														{subItem.text}
+													</a>
+												) : (
+													<div class="my-0.5 block px-4 pb-4 text-lg font-normal whitespace-nowrap">
+														<span
+															class={`${subIndex === 0 ? "text-orange" : subIndex === 1 ? "text-accent-blue" : "text-accent-purple"} ml-0.5 font-semibold tracking-wide uppercase`}
+														>
+															<Icon
+																name={subItem.title.toLowerCase().split(" ").join("-") + "-icon"}
+																class="mb-0.5 inline h-7 w-auto"
+															/>
+															{subItem.title}
+														</span>
+														<ul class="z-50">
+															{subItem.values.map((nestedItem) => (
+																<li>
+																	<a
+																		href={nestedItem.link}
+																		class="hover:bg-background-light-hover my-0.5 block rounded-xl px-6 py-2 pl-7 text-base font-normal whitespace-nowrap"
+																	>
+																		{nestedItem.text}
+																		<Icon name="chevronDown" class="mb-0.5 inline -rotate-90" />
+																	</a>
+																</li>
+															))}
+														</ul>
+													</div>
+												)}
+											</li>
+										))}
+									</ul>
+								)}
+							</li>
+						);
+					})
 				}
-				<li>
-					<Button
-						buttonText="Sign In"
-						link="https://dashboard.lemverify.io/#/signin"
-						width="w-32"
-					/>
+			</ul>
+			<ul
+				class="mx-auto flex w-full flex-col items-center justify-center gap-2 lg:w-fit lg:flex-row lg:justify-end"
+			>
+				<li class="border-background-light-hover w-full border-b lg:border-transparent">
+					<a
+						href="/account"
+						class="lg:text-text-secondary hover:bg-background-light-hover my-2 block px-3 pt-2 pb-4 text-center text-lg font-normal whitespace-nowrap lg:my-0.5 lg:rounded-lg lg:py-1"
+					>
+						My Account
+					</a>
 				</li>
 				<li>
 					<Button
-						buttonText="Start Now"
-						link="https://dashboard.lemverify.io/#/signup"
-						width="w-32"
+						buttonText="Start Free Trial"
+						link="/signup/"
+						type="filled"
+						class="my-6 py-4 lg:my-0 lg:py-2"
 					/>
 				</li>
 			</ul>
@@ -139,12 +244,12 @@ const menu = [
 <script>
 	document.querySelectorAll(".item").forEach((ahref) => {
 		if (window.innerWidth < 1024) {
-			// Add event parameter to the event listener function
 			ahref.addEventListener("click", (e) => {
 				e.preventDefault();
 			});
 		}
 	});
+
 	document.querySelectorAll(".group.menu").forEach((dropdown) => {
 		dropdown.addEventListener("click", () => {
 			const currentDropdown = dropdown.querySelector(".dropdown");
@@ -152,28 +257,36 @@ const menu = [
 
 			allDropdowns.forEach((dropdown) => {
 				if (dropdown !== currentDropdown) {
-					dropdown.classList.remove("max-h-72");
+					dropdown.classList.remove("max-h-[999px]");
 				}
 			});
-			currentDropdown!.classList.toggle("max-h-72");
+			currentDropdown?.classList.toggle("max-h-[999px]");
+			dropdown.setAttribute(
+				"aria-expanded",
+				currentDropdown?.classList.contains("max-h-[999px]") ? "true" : "false",
+			);
 		});
 	});
 
-	document.getElementById("hamburgerToggle")!.addEventListener("click", () => {
-		const hamburgerToggle = document.getElementById("hamburgerToggle")!;
-		const menu = document.getElementById("menu")!;
-		const isExpanded = hamburgerToggle.getAttribute("aria-expanded") === "true";
-		if (isExpanded) {
-			menu.classList.add("translate-x-full");
-			setTimeout(() => {
-				menu.classList.add("hidden");
-			}, 200);
-		} else {
-			menu.classList.remove("hidden");
-			setTimeout(() => {
-				menu.classList.remove("translate-x-full");
-			}, 200);
+	document.getElementById("hamburgerToggle")?.addEventListener("click", () => {
+		const hamburgerToggle = document.getElementById("hamburgerToggle");
+		const menu = document.getElementById("menu");
+		if (hamburgerToggle && menu) {
+			const isExpanded = hamburgerToggle.getAttribute("aria-expanded") === "true";
+			if (isExpanded) {
+				menu.classList.remove("max-h-[999px]");
+				menu.classList.add("max-h-0");
+				setTimeout(() => {
+					menu.classList.add("hidden");
+				}, 200);
+			} else {
+				menu.classList.remove("hidden");
+				setTimeout(() => {
+					menu.classList.add("max-h-[999px]");
+					menu.classList.remove("max-h-0");
+				}, 200);
+			}
+			hamburgerToggle.setAttribute("aria-expanded", String(!isExpanded));
 		}
-		hamburgerToggle.setAttribute("aria-expanded", String(!isExpanded));
 	});
 </script>
