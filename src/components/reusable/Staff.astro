@@ -1,0 +1,67 @@
+---
+import { Picture } from "astro:assets";
+import Button from "./Button.astro";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/staff/*.{jpeg,jpg,png,svg,webp}",
+);
+---
+
+<div class="my-12 w-screen sm:my-32">
+	<div
+		class="mx-auto flex h-full max-w-7xl flex-col-reverse items-start justify-evenly gap-4 p-4 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
+	>
+		<div
+			class="grid grid-cols-2 items-center justify-center gap-4 gap-y-4 sm:grid-cols-3 sm:justify-between sm:gap-8 sm:gap-y-8"
+		>
+			{
+				Object.keys(imageModules).map(async (image) => {
+					const imageSrc = await imageModules[image]();
+					return (
+						<div class="p-4">
+							<Picture
+								sizes="300px"
+								widths={[200, 400, 800]}
+								class="h-full w-full max-w-36 object-contain"
+								formats={["avif", "webp"]}
+								fallbackFormat="jpeg"
+								src={imageSrc.default}
+								alt={image}
+							/>
+							<p class="mt-4 text-center text-lg font-bold capitalize sm:text-xl">
+								{image.split("/").pop()!.split(".")[0]}
+							</p>
+						</div>
+					);
+				})
+			}
+		</div>
+		<div
+			class="flex h-full flex-col justify-start gap-4 text-center sm:w-1/3 sm:gap-8 sm:text-start"
+		>
+			<div>
+				<p
+					class={`text-lg font-semibold tracking-wide uppercase sm:text-xl/10 text-text-secondary mb-2 sm:mb-0`}
+				>
+					Get Started
+				</p>
+				<h2 class={`text-4xl/12 font-bold sm:text-6xl/18`}>We're Here to Help</h2>
+			</div>
+			<p class="text-lg sm:text-xl/8">
+				While Daylite is intuitive and faster to onboard than most CRMs and Project Management
+				tools, learning a new system takes time and can feel overwhelming. We're here to help you
+				get set up for success with both free and paid services for starting small or going big.
+			</p>
+			<Button
+				buttonText="Talk to an Advisor"
+				,
+				link="https://marketcircle.as.me/15-minute-daylite-demo/"
+				,
+				type="filledBlue"
+				,
+				class="mx-auto my-6 w-52 py-5 text-xl sm:mx-0 lg:my-0"
+				,
+			/>
+		</div>
+	</div>
+</div>

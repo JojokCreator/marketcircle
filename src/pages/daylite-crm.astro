@@ -1,0 +1,168 @@
+---
+import ImageText from "../components/reusable/ImageText.astro";
+import Layout from "../layouts/Layout.astro";
+import hero from "../assets/crm/crm-hero.webp";
+import remember from "../assets/crm/remember.webp";
+import impress from "../assets/crm/impress.webp";
+import organize from "../assets/crm/organize.webp";
+import control from "../assets/crm/control.webp";
+import send from "../assets/crm/send.webp";
+import streamline from "../assets/crm/streamline.webp";
+import smart from "../assets/crm/smart.webp";
+import business from "../assets/home/growMacbook.webp";
+import Button from "../components/reusable/Button.astro";
+import { Icon } from "astro-icon/components";
+import LogoBanner from "../components/reusable/LogoBanner.astro";
+import CenterText from "../components/reusable/CenterText.astro";
+import Section from "../components/reusable/Section.astro";
+import CTA from "../components/reusable/CTA.astro";
+import Blob from "../components/reusable/Blob.astro";
+---
+
+<Layout>
+	<ImageText
+		first={true}
+		title="Stay On Top of All Your Client Interactions"
+		titleColor="text-accent-blue"
+		imageSide="right"
+		image={hero}
+	>
+		<p class="text-lg sm:text-xl/8">
+			Managing your clients can be overwhelming. With Daylite CRM, you can spend less time managing
+			your clients and more time focused on building stronger relationships with them.
+		</p>
+		<Button
+			buttonText="Start Free Trial"
+			,
+			link="/signup/"
+			,
+			type="filled"
+			,
+			class="my-6 w-52 py-5 text-xl lg:my-0"
+			,
+		/>
+		<p class="text-sm sm:text-base">
+			<Icon name="apple" class="mr-2 mb-1 inline" /> Only for Mac, iPhone, and iPad
+		</p>
+	</ImageText>
+	<CenterText
+		title="Are you struggling to manage your growing client list?"
+		titleColor="text-accent-blue"
+		cardsTitle="You've built your business this far. Take it to the next level."
+		><p class="text-lg sm:text-xl/8">
+			Many small business owners are managing their clients and their needs scattered between
+			various tools. This makes it impossible to stay on top of all their client communications and
+			results in details falling through the cracks. As their client list grows over time, they’re
+			spending more time managing their client relationships than moving them forward.
+		</p><p class="text-accent-blue mt-4 text-xl font-bold sm:mt-8 sm:text-2xl/8">
+			There is a better way. Daylite CRM can help you regain control of your client relationships!
+		</p>
+		<p class="mt-4 text-lg sm:mt-8 sm:text-xl/8">
+			Daylite CRM was made to help small businesses reduce the time it takes to keep track of client
+			interactions and manage follow-ups. An app exclusively for your Mac, iPhone and iPad, that
+			will organize client details, automate your routine tasks, manage your schedules, and free up
+			your time so you can regain control and focus on doing what you love.
+		</p>
+	</CenterText>
+	<Blob>
+		<h2 class="mx-auto max-w-3xl text-4xl/10 font-bold sm:text-5xl/16">
+			Here’s how Daylite helps you <br />regain control of your <span class="text-accent-blue"
+				>client <br /> relationships…</span
+			>
+		</h2>
+	</Blob>
+	<Section
+		isCol={true}
+		color="text-accent-blue"
+		bg="bg-white"
+		title="Remember Every Detail"
+		header={{ icon: "bulb" }}
+		text="With Daylite’s Mac-friendly design and ease of use, everything you and your team need to know about your clients is at your fingertips, on one screen. Better still, on any Mac or iOS device, with or without an internet connection, your team can add and access email history, call-notes, reminders, follow-ups, contracts and much more with ease. This ability to share information and view it at-a-glance helps you and your team minimize downtime while maximizing efficiency and profit."
+		image={remember}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-background-light"
+		title="Impress Your Clients"
+		header={{ icon: "wand" }}
+		text="More often than not, it’s remembering the smallest details about your clients that go the longest way in impressing them. Show your clients you care by thanking them for a referral, sending them a peanut-free dark chocolate treat on their birthday, or remembering to ask how their puppy “Toba” is doing the next time you chat. Daylite remembers these details for you, so you can focus on the bigger things while building stronger, more personal relationships with all your clients."
+		image={impress}
+		breakOut="right"
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-background-dark"
+		title="Smartly Segment Clients"
+		header={{ icon: "avatars" }}
+		text="You and your team want to stay top of mind with past clients by sending out updates or personal check-ins. But, which clients should you reach out to? With Daylite, you can classify your contacts using keywords, categories, and other criteria, then filter them to find exactly who you’re looking for. Save these filters as “Smart Lists” and you have dynamic lists that update automatically when contacts match the criteria."
+		image={smart}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-background-light"
+		title="Manage Email with Ease"
+		header={{ icon: "email" }}
+		text="Daylite integrates seamlessly with your inbox, whether you’re on your Mac or your iPhone or iPad. Save email conversations, add new contacts, schedule meetings, and create follow-up reminders, all from your email. Plus, you can share email communication with your team so everyone is in the loop."
+		image={business}
+		imageSide="left"
+		cards={[
+			{
+				icon: "clock",
+				title: "Create a Complete History",
+				text: "When you or your team save an email in Daylite, it’s linked to the associated contact, deal, or project. This gives the entire team the ability to find and see that communication directly in Daylite, regardless of which team member received and saved the email.",
+			},
+			{
+				icon: "tick",
+				title: "Action Your Emails",
+				text: "Process an email by creating a follow-up reminder, to-do, or appointment right from the message, then clear the email from your inbox. The email is automatically saved in Daylite and linked to the new item, making it easy to find later. You can even delegate the email to someone else using a task.",
+			},
+			{
+				icon: "add",
+				title: "Add & Update Contacts",
+				text: "Daylite makes it easy to edit client details, update contact information, create new leads, or even create new deals and projects right from your inbox. If you save an email from a new contact, Daylite will create a new contact record for you.",
+			},
+		]}
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-white"
+		title="Send Personalized Emails"
+		header={{ icon: "pen" }}
+		text="As your client list grows, personalization can become challenging, but also more important. By showing a deeper understanding of who your clients are, you and your team can build loyalty. With Daylite, it’s easy to create customized email templates for onboarding, renewals, new offers, and more. Daylite makes it even faster to send personalized emails to a single contact or a segmented group all at once."
+		image={send}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-background-light"
+		title="Streamline Your Workflow"
+		header={{ icon: "streamline" }}
+		text="As you and your team close more deals and grow your business, it can become a challenge to juggle the onboarding process for multiple clients at once. Daylite solves this problem by allowing you to create checklists of to-dos or follow-ups that can be added to a client with a single click."
+		image={streamline}
+		imageSide="left"
+	/>
+	<Section
+		isCol={true}
+		color="text-accent-blue"
+		bg="bg-background-dark"
+		title="Organize Client Data With Forms"
+		header={{ icon: "clipboard" }}
+		text="Client intake forms are easily lost, easily forgotten, and easily ignored. Daylite improves the process by helping you and your team systemize all the information you collect from a client in one centralized location. With Daylite, everything is easily accessible across your teams and ensures you’re collecting the right data from the start."
+		image={organize}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-blue"
+		bg="bg-background-light"
+		title="Control Access & Permissions"
+		header={{ icon: "lock" }}
+		text="When it comes to building stronger relationships and trust with clients, you and your team need complete control. With Daylite, you can easily control which team members can view, edit, and add specific client information."
+		image={control}
+		imageSide="right"
+	/>
+	<CTA padding={true} />
+	<LogoBanner />
+</Layout>

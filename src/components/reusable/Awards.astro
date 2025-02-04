@@ -1,0 +1,66 @@
+---
+import { Picture } from "astro:assets";
+import award from "../../assets/awards/grouped-badges.webp";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+	"/src/assets/awards/*.{jpeg,jpg,png,svg}",
+);
+
+interface Props {
+	title: string;
+	header: string;
+	text: string;
+}
+const { title, header, text } = Astro.props;
+---
+
+<section class="bg-background-light py-8 sm:py-24">
+	<div class={`mx-auto max-w-7xl `}>
+		<div class={`flex flex-col justify-center text-center items-center`}>
+			<div class={`px-4 xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-16`}>
+				<div>
+					<p
+						class={`text-text-secondary text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+					>
+						{header}
+					</p>
+					<h2 class="mb-4 text-3xl/12 font-bold sm:mb-8 sm:text-5xl/18">{title}</h2>
+					<p class="mx-auto max-w-4xl text-lg sm:text-xl/8">{text}</p>
+				</div>
+				<div
+					class="mx-auto flex max-w-4xl grow flex-wrap items-center justify-between gap-4 sm:gap-8"
+				>
+					{
+						Object.keys(imageModules).map(async (image) => {
+							const imageSrc = await imageModules[image]();
+							return (
+								<div class="h-24 w-auto sm:h-32">
+									<Picture
+										sizes="100px"
+										widths={[200, 400, 800]}
+										class="h-full w-full object-contain"
+										formats={["avif", "webp"]}
+										fallbackFormat="jpeg"
+										src={imageSrc.default}
+										alt={image}
+									/>
+								</div>
+							);
+						})
+					}
+				</div>
+				<div class={`mx-auto mt-4 md:mt-2 md:w-full max-w-xl`}>
+					<Picture
+						src={award}
+						alt={"title"}
+						sizes="(max-width: 640px) 100vw, 800px"
+						formats={["avif", "webp"]}
+						fallbackFormat="jpg"
+						widths={[400, 800, 1200]}
+						class="h-full w-full rounded-lg object-cover"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

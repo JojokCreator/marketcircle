@@ -14,11 +14,15 @@ export type Props = {
 const filledClasses = `
   bg-orange whitespace-nowrap active:focus:animate-click hover:opacity-90 relative inline-flex items-center justify-center p-4 px-5 py-3 text-sm sm:text-base max-h-12 overflow-hidden font-medium text-white rounded-xl transition-all duration-500 ease-in-out
 `;
+const filledBlueClasses = `
+  bg-accent-darkblue whitespace-nowrap active:focus:animate-click hover:opacity-90 relative inline-flex items-center justify-center p-4 px-5 py-3 text-sm sm:text-base max-h-12 overflow-hidden font-medium text-white rounded-xl transition-all duration-500 ease-in-out
+`;
 const outlineClasses = `
   bg-[#F3F3FB] inline-flex whitespace-nowrap items-center justify-center px-4 py-3 font-medium text-primary text-sm sm:text-base max-h-12 hover:shadow-[0_0_10px_2px_rgba(75,58,179,0.3)] rounded-xl transition duration-500 ease-in-out
 `;
 
-const typeClasses = type === "filled" ? filledClasses : outlineClasses;
+const typeClasses =
+	type === "filled" ? filledClasses : type === "filledBlue" ? filledBlueClasses : outlineClasses;
 
 const combinedClasses = twMerge(typeClasses, className);
 ---

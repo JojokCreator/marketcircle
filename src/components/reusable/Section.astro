@@ -3,25 +3,29 @@ import { Picture } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 interface Props {
+	id?: string;
 	isCol?: boolean;
 	color: string;
 	bg: string;
 	title: string;
-	header: string;
+	header: string | { icon: string };
 	text: string;
 	image: ImageMetadata;
 	imageSide?: "left" | "right";
+	breakOut?: "left" | "right" | false;
 	button?: { link: string; text: string };
-	cards: { title: string; text: string; icon: string }[];
-	quote: { image: ImageMetadata; quote: string; author: string; position: string };
+	cards?: { title: string; text: string; icon: string }[];
+	quote?: { image: ImageMetadata; quote: string; author: string; position: string };
 }
 const {
 	isCol = false,
 	title,
+	id,
 	header,
 	text,
 	image,
 	imageSide = "left",
+	breakOut = false,
 	button,
 	cards,
 	quote,
@@ -32,7 +36,7 @@ const {
 
 <section
 	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24`}
-	id={title.toLowerCase()}
+	id={id ? id : title.toLowerCase()}
 >
 	<div class={`mx-auto max-w-7xl py-8 sm:py-24`}>
 		<div
@@ -44,16 +48,24 @@ const {
 				} flex flex-col justify-between gap-4 sm:gap-8`}
 			>
 				<div>
-					<p
-						class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
-					>
-						{header}
-					</p>
+					{
+						typeof header === "string" ? (
+							<p
+								class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+							>
+								{header}
+							</p>
+						) : (
+							<Icon name={header.icon} size="72" />
+						)
+					}
 					<h2 class={`${color} text-4xl/12 font-bold sm:text-6xl/18`}>{title}</h2>
 				</div>
 				<p class="text-lg sm:text-xl/8">{text}</p>
 			</div>
-			<div class={`mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}>
+			<div
+				class={`${breakOut === "right" ? "break-right md:w-full" : breakOut === "left" ? "break-left" : "w-1/2"} mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}
+			>
 				<Picture
 					src={image}
 					alt={title}
@@ -65,44 +77,50 @@ const {
 				/>
 			</div>
 		</div>
-		<div class="mx-auto flex w-full max-w-7xl flex-row justify-between py-8 sm:py-12">
-			{
-				cards.map((card) => (
-					<div class="space-y-2 p-4 text-base sm:w-96 sm:p-6 sm:text-lg/8">
-						<Icon name={card.icon} size="52" />
-						<p class="mt-4 text-lg font-bold sm:text-xl">{card.title}</p>
-						<p>{card.text}</p>
-					</div>
-				))
-			}
-		</div>
-		<figure class="border-text-secondary/20 relative mx-auto max-w-3xl border-y py-6 pt-10">
-			<figcaption class="mt-6 space-y-4 text-center">
-				<div class="mx-auto aspect-square h-20 w-auto">
-					<Picture
-						src={quote.image}
-						alt={quote.author}
-						sizes="200px"
-						formats={["avif", "webp"]}
-						fallbackFormat="jpg"
-						widths={[400, 800, 1200]}
-						class="h-full w-full rounded-lg object-cover"
-					/>
+		{
+			cards && cards.length > 0 && (
+				<div class="mx-auto flex w-full max-w-7xl flex-col justify-between py-8 sm:flex-row sm:py-12">
+					{cards.map((card) => (
+						<div class="space-y-2 p-4 text-base sm:w-96 sm:p-6 sm:text-lg/8">
+							<Icon name={card.icon} size="52" />
+							<p class="mt-4 text-lg font-bold sm:text-xl">{card.title}</p>
+							<p>{card.text}</p>
+						</div>
+					))}
 				</div>
-				<blockquote class="relative z-10 px-20 text-center leading-relaxed sm:text-lg">
-					{quote.quote}
-				</blockquote>
-				<div
-					class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} font-semibold`}
-				>
-					{quote.author}, {quote.position}
-				</div>
-			</figcaption>
-		</figure>
+			)
+		}
+		{
+			quote && (
+				<figure class="border-text-secondary/20 relative mx-auto max-w-3xl border-y px-2 py-6 pt-0 sm:px-0 sm:pt-10">
+					<figcaption class="border-l-accent-blue mt-6 space-y-4 border-l-4 text-center sm:border-0">
+						<div class="mx-auto aspect-square h-20 w-auto">
+							<Picture
+								src={quote.image}
+								alt={quote.author}
+								sizes="200px"
+								formats={["avif", "webp"]}
+								fallbackFormat="jpg"
+								widths={[400, 800, 1200]}
+								class="h-full w-full rounded-lg object-cover"
+							/>
+						</div>
+						<blockquote class="relative z-10 px-4 leading-relaxed sm:px-20 sm:text-center sm:text-lg">
+							{quote.quote}
+						</blockquote>
+						<div
+							class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-primary"} font-semibold`}
+						>
+							{quote.author}, {quote.position}
+						</div>
+					</figcaption>
+				</figure>
+			)
+		}
 		{
 			button && button.link && (
 				<a
-					class={`${color} mt-8 flex justify-center text-center text-2xl underline underline-offset-4 hover:opacity-80 sm:mt-16`}
+					class={`${color} mt-8 flex justify-center text-center text-xl underline underline-offset-4 hover:opacity-80 sm:mt-16 sm:text-2xl`}
 					href={button.link}
 				>
 					{button.text}

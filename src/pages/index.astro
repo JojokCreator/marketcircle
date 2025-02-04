@@ -1,24 +1,23 @@
 ---
 import ImageText from "../components/reusable/ImageText.astro";
 import Layout from "../layouts/Layout.astro";
-import hero from "../assets/hero.webp";
-import macbook from "../assets/relationshipsMacbook.webp";
-import macbook2 from "../assets/dealsMaciphone.webp";
-import projects from "../assets/projectsMacbook.webp";
-import business from "../assets/growMacbook.webp";
-import apple from "../assets/apple-devices.webp";
-import gina from "../assets/ginabest.webp";
-import max from "../assets/max-black.webp";
-import jeremy from "../assets/jeremy.webp";
-import josh from "../assets/josh.webp";
-import appleCalendar from "../assets/apple-calendar.webp";
-import appleDevices from "../assets/apple-devices.webp";
-import appleFace from "../assets/apple-face-id.webp";
-import appleFaceTime from "../assets/apple-face-time.webp";
-import appleMail from "../assets/apple-mail.webp";
-import applePages from "../assets/apple-pages.webp";
-import appleSiri from "../assets/apple-siri.webp";
-import offline from "../assets/appleOffline.svg";
+import hero from "../assets/home/hero.webp";
+import macbook from "../assets/home/relationshipsMacbook.webp";
+import macbook2 from "../assets/home/dealsMaciphone.webp";
+import projects from "../assets/home/projectsMacbook.webp";
+import business from "../assets/home/growMacbook.webp";
+import gina from "../assets/testimonials/ginabest.webp";
+import max from "../assets/testimonials/max-black.webp";
+import jeremy from "../assets/testimonials/jeremy.webp";
+import josh from "../assets/testimonials/josh.webp";
+import appleCalendar from "../assets/featured/apple-calendar.webp";
+import appleDevices from "../assets/featured/apple-devices.webp";
+import appleFace from "../assets/featured/apple-face-id.webp";
+import appleFaceTime from "../assets/featured/apple-face-time.webp";
+import appleMail from "../assets/featured/apple-mail.webp";
+import applePages from "../assets/featured/apple-pages.webp";
+import appleSiri from "../assets/featured/apple-siri.webp";
+import offline from "../assets/featured/appleOffline.svg";
 import Button from "../components/reusable/Button.astro";
 import { Icon } from "astro-icon/components";
 import LogoBanner from "../components/reusable/LogoBanner.astro";
@@ -28,10 +27,19 @@ import Scroll from "../components/reusable/Scroll.astro";
 import Section from "../components/reusable/Section.astro";
 import Grid from "../components/reusable/Grid.astro";
 import FeaturedSection from "../components/reusable/FeaturedSection.astro";
+import Staff from "../components/reusable/Staff.astro";
+import Awards from "../components/reusable/Awards.astro";
+import CTA from "../components/reusable/CTA.astro";
 ---
 
 <Layout>
-	<ImageText first={true} title="Get Organized, Be Productive!" imageSide="right" image={hero}>
+	<ImageText
+		first={true}
+		title="Get Organized, Be Productive!"
+		imageSide="right"
+		image={hero}
+		breakOut="right"
+	>
 		<p class="text-lg sm:text-xl/8">
 			Has running your business taken over? We get it! From juggling prospects to tracking sales to
 			keeping client commitments, it gets overwhelming. <span class="font-bold">Enter Daylite!</span
@@ -55,26 +63,6 @@ import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 	<CenterText
 		title="Daylite — Your All-In-One Solution for Business Success"
 		cardsTitle="You've built your business this far. Take it to the next level."
-		cards={[
-			{
-				title: "Start your 14-day trial",
-				text: "Download Daylite on your Mac, iPad, and iPhone.",
-			},
-			{
-				title: "Start using Daylite daily",
-				text: "Organize your business in one place.",
-			},
-			{
-				title: "Level up!",
-				text: "Have more time to do what you love.",
-			},
-		]}
-		button={{
-			buttonText: "Start Free Trial",
-			link: "/signup/",
-			type: "filled",
-			class: "my-6 w-52 py-5 text-xl lg:my-0",
-		}}
 		><p class="text-lg sm:text-xl/8">
 			<span class="font-bold">Daylite isn't just another CRM</span> it's a powerful business management
 			tool that keeps everything connected. Link emails, calls, tasks, and notes directly to your clients,
@@ -96,7 +84,7 @@ import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 	/>
 	<Scroll
 		title="Effortless Customer, Sales and Project Management"
-		scroll={["CRM", "sales", "projects", "business"]}
+		scroll={["crm", "sales", "projects", "business"]}
 	>
 		<p class="text-lg sm:text-xl/8">
 			When you need to manage your clients, track your sales or deliver on projects, Daylite has the
@@ -105,6 +93,7 @@ import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 		</p>
 	</Scroll>
 	<Section
+		id="crm"
 		color="text-accent-blue"
 		bg="bg-white"
 		title="CRM"
@@ -206,6 +195,7 @@ import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 		}}
 	/>
 	<Section
+		id="business"
 		isCol={true}
 		color="text-accent-purple"
 		bg="bg-white"
@@ -302,4 +292,16 @@ import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 			},
 		]}
 	/>
+	<Staff />
+	<Awards
+		title="Trusted by Thousands of Businesses in 80+ Countries"
+		text="For over 20 years we've been helping people grow their businesses. Join our community of small businesses doing big things!"
+		header="Customers Love Us"
+	/>
+	<Quote
+		author="Jackson M. Doggette Jr."
+		position="Attorney and Founder of Doggette Law Firm and Doggette Solutions LLC."
+		quote="Daylite helps me to refocus on what I need to be doing right now. It helps me to focus on the activities that will grow revenue as opposed to being very busy doing a lot of things but not making the progress that I want. Daylite gives me the big picture and helps me refocus on what I need to be doing."
+	/>
+	<CTA padding={true} />
 </Layout>

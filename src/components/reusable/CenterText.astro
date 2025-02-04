@@ -1,47 +1,28 @@
 ---
 import type { Props as ButtonProps } from "./Button.astro";
 import Button from "./Button.astro";
+import CTA from "./CTA.astro";
 
 interface Props {
 	title: string;
-	button?: ButtonProps | false;
 	cardsTitle: string;
-	cards: { title: string; text: string }[];
+	titleColor?: string;
 }
-const { title, button, cards, cardsTitle } = Astro.props;
+const { title, cardsTitle, titleColor = "text-text-primary" } = Astro.props;
 ---
 
 <section class={`mx-auto max-w-7xl my-8 sm:my-32`}>
 	<div class={`flex flex-col justify-center text-center items-center`}>
 		<div class={`px-4 xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-8`}>
 			<div class="mx-auto max-w-4xl">
-				<h2 class="mb-4 text-3xl/12 font-bold sm:mb-8 sm:text-5xl/18">{title}</h2>
+				<h2 class={`mb-4 text-3xl/12 font-bold sm:mb-8 sm:text-5xl/18 ${titleColor}`}>{title}</h2>
 				<slot />
 			</div>
-			<h2 class="mt-4 text-2xl/10 font-bold sm:mt-8 sm:text-3xl/16">{cardsTitle}</h2>
-			<div class="mx-auto flex w-full max-w-6xl flex-row justify-between py-8 sm:py-12">
-				{
-					cards.map((card, index) => (
-						<div class="space-y-2 text-base sm:w-96 sm:text-lg/8">
-							<div class="border-orange text-orange mx-auto mb-2 grid aspect-square max-w-12 place-items-center rounded-full border-4 text-xl font-bold sm:text-2xl">
-								{index + 1}
-							</div>
-							<p class="font-bold">{card.title}</p>
-							<p>{card.text}</p>
-						</div>
-					))
-				}
+			<div
+				class={`${titleColor === "text-text-primary" ? "bg-white" : "bg-background-light"}  w-screen py-4 sm:py-12`}
+			>
+				<CTA cardsTitle={cardsTitle} />
 			</div>
-			{
-				button && button.link && (
-					<Button
-						type={button.type}
-						link={button.link}
-						buttonText={button.buttonText}
-						class="mx-auto w-72"
-					/>
-				)
-			}
 		</div>
 	</div>
 </section>
