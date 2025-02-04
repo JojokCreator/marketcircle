@@ -1,0 +1,56 @@
+---
+import Button from "./Button.astro";
+
+const cards = [
+	{
+		title: "Start your 14-day trial",
+		text: "Download Daylite on your Mac, iPad, and iPhone.",
+	},
+	{
+		title: "Start using Daylite daily",
+		text: "Organize your business in one place.",
+	},
+	{
+		title: "Level up!",
+		text: "Have more time to do what you love.",
+	},
+];
+
+interface Props {
+	cardsTitle?: string;
+	padding?: boolean;
+}
+const {
+	cardsTitle = "You’ve built your business this far. Take it to the next level.",
+	padding = false,
+} = Astro.props;
+---
+
+<div class={`${padding ? "my-8 sm:my-24" : ""} text-center`}>
+	<h2 class="mt-4 text-2xl/10 font-bold sm:mt-8 sm:text-3xl/16">{cardsTitle}</h2>
+	<div
+		class="mx-auto flex w-full max-w-6xl flex-col justify-between gap-4 py-8 sm:flex-row sm:gap-0 sm:py-12"
+	>
+		{
+			cards.map((card, index) => (
+				<div class="space-y-2 text-base sm:w-96 sm:text-lg/8">
+					<div class="border-orange text-orange mx-auto mb-2 grid aspect-square max-w-12 place-items-center rounded-full border-4 text-xl font-bold sm:text-2xl">
+						{index + 1}
+					</div>
+					<p class="font-bold">{card.title}</p>
+					<p>{card.text}</p>
+				</div>
+			))
+		}
+	</div>
+	<Button
+		buttonText="Start Free Trial"
+		,
+		link="/signup/"
+		,
+		type="filled"
+		,
+		class="mx-auto my-6 w-72 py-5 text-xl lg:my-0"
+		,
+	/>
+</div>

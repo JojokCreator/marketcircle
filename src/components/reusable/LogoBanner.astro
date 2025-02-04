@@ -6,11 +6,13 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<div class="bg-background-light-hover w-screen">
+<div class="bg-background-light w-screen">
 	<div
-		class="mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 p-4 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
+		class="mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 p-6 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
 	>
-		<p class="text-sm sm:text-base">Featured on top Apple & business news sources:</p>
+		<p class="text-text-secondary text-sm sm:text-base">
+			Featured on top Apple & business news sources:
+		</p>
 		<div class="flex grow flex-wrap items-center justify-center gap-4 sm:justify-between">
 			{
 				Object.keys(imageModules).map(async (image) => {

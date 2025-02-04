@@ -9,11 +9,21 @@ interface Props {
 	imageSide?: "left" | "right";
 	button?: ButtonProps | false;
 	first: boolean;
+	breakOut?: "left" | "right" | false;
+	titleColor?: string;
 }
-const { title, image, imageSide = "left", button, first = false } = Astro.props;
+const {
+	title,
+	image,
+	imageSide = "left",
+	button,
+	first = false,
+	breakOut = false,
+	titleColor = "text-text-primary",
+} = Astro.props;
 ---
 
-<section class={`mx-auto max-w-7xl ${first ? "mt-24 sm:mt-14" : "my-8 sm:my-32"}`}>
+<section class={`mx-auto max-w-7xl ${first ? "mt-24 sm:mt-28" : "my-8 sm:my-32"}`}>
 	<div class={`md:flex items-center ${imageSide === "left" ? "flex-row-reverse" : ""}`}>
 		<div
 			class={`px-4 xl:px-0 md:w-2/3 h-full ${
@@ -22,9 +32,9 @@ const { title, image, imageSide = "left", button, first = false } = Astro.props;
 		>
 			{
 				first ? (
-					<h1 class="text-4xl/12 font-bold sm:text-6xl/18">{title}</h1>
+					<h1 class={`text-4xl/12 font-bold sm:text-6xl/18 ${titleColor}`}>{title}</h1>
 				) : (
-					<h2 class="text-2xl/10 font-bold sm:text-3xl/16">{title}</h2>
+					<h2 class={`text-2xl/10 font-bold sm:text-3xl/16 ${titleColor}`}>{title}</h2>
 				)
 			}
 			<slot />
@@ -39,7 +49,9 @@ const { title, image, imageSide = "left", button, first = false } = Astro.props;
 				)
 			}
 		</div>
-		<div class="break-right mx-auto mt-4 md:mt-2 md:w-full">
+		<div
+			class={`${breakOut === "right" ? "break-right md:w-full" : breakOut === "left" ? "break-left" : "w-1/2"} mx-auto mt-4 md:mt-2`}
+		>
 			<Picture
 				src={image}
 				alt={title}
@@ -47,7 +59,7 @@ const { title, image, imageSide = "left", button, first = false } = Astro.props;
 				formats={["avif", "webp"]}
 				fallbackFormat="jpg"
 				widths={[400, 800, 1200]}
-				class="h-full w-full rounded-lg object-cover"
+				class="h-full w-full rounded-lg object-contain"
 			/>
 		</div>
 	</div>
