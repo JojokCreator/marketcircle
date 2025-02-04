@@ -2,13 +2,22 @@
 import ImageText from "../components/reusable/ImageText.astro";
 import Layout from "../layouts/Layout.astro";
 import hero from "../assets/hero.webp";
+import macbook from "../assets/relationshipsMacbook.webp";
+import macbook2 from "../assets/dealsMaciphone.webp";
+import projects from "../assets/projectsMacbook.webp";
+import business from "../assets/growMacbook.webp";
+import gina from "../assets/ginabest.webp";
+import max from "../assets/max-black.webp";
+import jeremy from "../assets/jeremy.webp";
+import josh from "../assets/josh.webp";
 import Button from "../components/reusable/Button.astro";
 import { Icon } from "astro-icon/components";
-import { Picture } from "astro:assets";
-
-const imageModules = import.meta.glob<{ default: ImageMetadata }>(
-	"/src/assets/logos/*.{jpeg,jpg,png,svg,webp}",
-);
+import LogoBanner from "../components/reusable/LogoBanner.astro";
+import CenterText from "../components/reusable/CenterText.astro";
+import Quote from "../components/reusable/Quote.astro";
+import Scroll from "../components/reusable/Scroll.astro";
+import Section from "../components/reusable/Section.astro";
+import Grid from "../components/reusable/Grid.astro";
 ---
 
 <Layout>
@@ -32,31 +41,209 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 			<Icon name="apple" class="mr-2 mb-1 inline" /> Only for Mac, iPhone, and iPad
 		</p>
 	</ImageText>
-	<div class="bg-background-light-hover w-screen">
-		<div
-			class="mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 p-4 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
-		>
-			<p class="text-sm sm:text-base">Featured on top Apple & business news sources:</p>
-			<div class="flex grow flex-wrap items-center justify-center gap-4 sm:justify-between">
-				{
-					Object.keys(imageModules).map(async (image) => {
-						const imageSrc = await imageModules[image]();
-						return (
-							<div class="h-5 w-auto sm:h-7">
-								<Picture
-									sizes="(max-width 768px) 50vw, (max-width 1130px) 25vw, 300px"
-									widths={[200, 400, 800]}
-									class="h-full w-full object-contain"
-									formats={["avif", "webp"]}
-									fallbackFormat="jpeg"
-									src={imageSrc.default}
-									alt={image}
-								/>
-							</div>
-						);
-					})
-				}
-			</div>
-		</div>
-	</div>
+	<LogoBanner />
+	<CenterText
+		title="Daylite — Your All-In-One Solution for Business Success"
+		cardsTitle="You've built your business this far. Take it to the next level."
+		cards={[
+			{
+				title: "Start your 14-day trial",
+				text: "Download Daylite on your Mac, iPad, and iPhone.",
+			},
+			{
+				title: "Start using Daylite daily",
+				text: "Organize your business in one place.",
+			},
+			{
+				title: "Level up!",
+				text: "Have more time to do what you love.",
+			},
+		]}
+		button={{
+			buttonText: "Start Free Trial",
+			link: "/signup/",
+			type: "filled",
+			class: "my-6 w-52 py-5 text-xl lg:my-0",
+		}}
+		><p class="text-lg sm:text-xl/8">
+			<span class="font-bold">Daylite isn't just another CRM</span> it's a powerful business management
+			tool that keeps everything connected. Link emails, calls, tasks, and notes directly to your clients,
+			projects, and opportunities. No more scattered information—all your business <span
+				class="font-bold">data is organized and accessible in one place</span
+			>. Whether you're managing sales pipelines, scheduling follow-ups, or tracking project
+			progress, Daylite keeps your workflow streamlined and efficient, all while continually
+			building the <span class="font-bold">bigger picture</span> that is your business history.
+		</p><p class="text-lg sm:text-xl/8">
+			And because it's built exclusively for <span class="font-bold">Mac, iPhone, and iPad</span>,
+			Daylite ensures a seamless experience across all your devices. Take control, simplify your
+			workflow, and focus on growing your business with Daylite.
+		</p>
+	</CenterText>
+	<Quote
+		author="Justis Danto-Clancy"
+		position="Criminal Defence Lawyer at JDC Law"
+		quote="My business and I rely on Daylite. I spend less time determining which tasks are high priority and which tasks can wait. I spend less time looking through my emails or querying particular documents on my computer and hard drive. I spend less time trying to get up to speed on where I left a file. Consequently, I spend more time moving my clients’ files towards trial or resolution, and I’m able to achieve better results for them more quickly."
+	/>
+	<Scroll
+		title="Effortless Customer, Sales and Project Management"
+		scroll={["CRM", "sales", "projects", "business"]}
+	>
+		<p class="text-lg sm:text-xl/8">
+			When you need to manage your clients, track your sales or deliver on projects, Daylite has the
+			tools to make it effortless. Whether you want to focus on just one of these areas or tackle
+			all three, Daylite has the flexibility to meet your needs.
+		</p>
+	</Scroll>
+	<Section
+		color="text-accent-blue"
+		bg="bg-white"
+		title="CRM"
+		header="Build Stronger Relationships"
+		text="Relationships are essential for every business. Daylite CRM helps you strengthen and nourish your client relationships by keeping track of communication and next steps so you're always on the ball no matter how big your client list grows."
+		image={macbook}
+		imageSide="left"
+		button={{ link: "/daylite-crm/", text: "Learn more about Daylite CRM" }}
+		cards={[
+			{
+				icon: "folder",
+				title: "Remember every detail",
+				text: "Remembering the little things makes clients feel special and builds trust. This opens the door to repeat business and more referrals. Daylite makes it easy to remember everything by keeping track of emails, notes, calls, and next steps in one place.",
+			},
+			{
+				icon: "arrows",
+				title: "Never miss a beat",
+				text: "Say goodbye to things slipping through the cracks because info was stuck in someone's head or inbox. Daylite keeps your team in sync by organizing and sharing everything in one place. Worried about confidential info? Daylite's permissions have you covered.",
+			},
+			{
+				icon: "avatar",
+				title: "Target the right people",
+				text: "When you want to narrow your contact list to find people in a specific industry or people you haven't touched base with in 6 months, Daylite makes it easy to find. Build customized lists that auto-update so you can stay top of mind and send personalized reach outs.",
+			},
+		]}
+		quote={{
+			image: gina,
+			quote:
+				"“Daylite has allowed us to increase our volume of business while still maintaining the high level of service our customers have come to expect.”",
+			author: "Gina Best",
+			position: "Mortgage Advantage West",
+		}}
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-light"
+		title="Sales"
+		header="Close More Deals"
+		text="As you build relationships and opportunities emerge, tracking deals gets messy – especially when it takes weeks, months, or years to close. Lose sight of these deals and you're leaving business on the table. Daylite Sales helps you and your team stay on top of every deal from start to close no matter how many you have in the pipeline."
+		image={macbook2}
+		imageSide="right"
+		button={{ link: "/daylite-sales/", text: "Learn more about Daylite Sales" }}
+		cards={[
+			{
+				icon: "rightArrow",
+				title: "Push deals forward",
+				text: "The more deals you have on the go and the larger your team grows, the harder it is to stay on top of the status of deals and what needs to be done to push each one forward. Daylite gives you an overview of where each deal is and what needs to happen next. Spend less time in status update meetings and more time closing deals.",
+			},
+			{
+				icon: "target",
+				title: "Focus on the right deals",
+				text: "Bringing in new business is an art of balancing your attention on the largest deals and the ones most likely to close. Daylite helps you prioritize your deals so you can focus on the right ones at the right time.",
+			},
+			{
+				icon: "graph",
+				title: "Report on sales",
+				text: "Know what's working and what's not so you can make informed decisions to increase your revenue. Daylite gives you visibility on your close rates, win/loss reasons, and top lead sources so you have the data to make better decisions and grow your business.",
+			},
+		]}
+		quote={{
+			image: max,
+			quote: "“With Daylite, we can spend less time thinking and spend more time executing.”",
+			author: "Max Black",
+			position: "Max Black Realty",
+		}}
+	/>
+	<Section
+		color="text-accent-orange"
+		bg="bg-background-dark"
+		title="Projects"
+		header="Close More Deals"
+		text="As you build relationships and opportunities emerge, tracking deals gets messy – especially when it takes weeks, months, or years to close. Lose sight of these deals and you're leaving business on the table. Daylite Sales helps you and your team stay on top of every deal from start to close no matter how many you have in the pipeline."
+		image={projects}
+		imageSide="left"
+		button={{ link: "/daylite-sales/", text: "Learn more about Daylite Sales" }}
+		cards={[
+			{
+				icon: "smile",
+				title: "More projects. Less stress.",
+				text: "Say goodbye to the stress and chaos of trying to figure out what's been done on each project and what needs to be done next. Daylite gives you visibility on the status of each project and next steps so you're always on the ball.",
+			},
+			{
+				icon: "arrows-orange",
+				title: "Collaborate and share",
+				text: "Help your team work better with less meetings and fewer interruptions. Share project details, next steps, meeting notes, and delegate tasks with Daylite so everyone is on the same page.",
+			},
+			{
+				icon: "circle",
+				title: "Automate next steps",
+				text: "Reduce cognitive overload and save time with Daylite's project templates. Automate creating next steps for new projects and various scenarios so you don't have to worry about steps getting missed.",
+			},
+		]}
+		quote={{
+			image: jeremy,
+			quote:
+				"“Daylite ramped up our capacity. It took us from being able to manage 50 projects to 250 projects with a similar staff size.”",
+			author: "Jeremy Picker",
+			position: "AMB3R Creative",
+		}}
+	/>
+	<Section
+		isCol={true}
+		color="text-accent-purple"
+		bg="bg-white"
+		title="Manage Your Entire Business"
+		header="Business"
+		text="With all the benefits of CRM, Sales, and Projects, Daylite Business allows you to spend less time managing clients, deals and projects, so you have more freedom to do what you love."
+		image={business}
+		imageSide="right"
+		button={{ link: "/daylite-business/", text: "Learn more about Daylite Business" }}
+		cards={[
+			{
+				icon: "CRM2",
+				title: "CRM",
+				text: "Keep track of all the important details and interactions about your clients in one place, so you can spend less time managing your client list and spend more time building stronger relationships with them.",
+			},
+			{
+				icon: "sales2",
+				title: "Sales",
+				text: "Stay on top of every deal and streamline your sales process efficiently in one place, so you can spend less time managing your sales opportunities and spend more time closing your deals.",
+			},
+			{
+				icon: "projects2",
+				title: "Projects",
+				text: "Stay on top of all the crucial details and organize all the moving pieces of your projects in one place, so you can spend less time managing your projects and spend more time completing your deliverables.",
+			},
+		]}
+		quote={{
+			image: josh,
+			quote:
+				"“We've seen amazing growth and Daylite has been a pivotal part of that success by allowing us to really ramp up our capacity and keep track of everything. It's definitely a program that grows with us as we do.”",
+			author: "Josh Nelson",
+			position: "Nelson Elder Care Law",
+		}}
+	/>
+	<Grid
+		title="Great for a Variety of Industries"
+		header="Customizable"
+		text="Daylite is flexible and easily customizable. You can tailor it to fit your niche and set up workflows that help you improve efficiency in a way that works best for you."
+		cards={[
+			{ title: "Real Estate", link: "/real-estate" },
+			{ title: "Legal", link: "/legal" },
+			{ title: "Financial & Wealth Management", link: "/financial-wealth-management" },
+			{ title: "Music & Entertainment", link: "/music-entertainment" },
+			{ title: "Consulting", link: "/consulting" },
+			{ title: "Marketing & Advertising", link: "/marketing-advertising" },
+			{ title: "Manufacturing", link: "/manufacturing" },
+			{ title: "Photography & Videography", link: "/photography-videography" },
+			{ title: "Software", link: "/software" },
+		]}
+	/>
 </Layout>
