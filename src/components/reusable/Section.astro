@@ -1,0 +1,113 @@
+---
+import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	isCol?: boolean;
+	color: string;
+	bg: string;
+	title: string;
+	header: string;
+	text: string;
+	image: ImageMetadata;
+	imageSide?: "left" | "right";
+	button?: { link: string; text: string };
+	cards: { title: string; text: string; icon: string }[];
+	quote: { image: ImageMetadata; quote: string; author: string; position: string };
+}
+const {
+	isCol = false,
+	title,
+	header,
+	text,
+	image,
+	imageSide = "left",
+	button,
+	cards,
+	quote,
+	bg,
+	color,
+} = Astro.props;
+---
+
+<section
+	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24`}
+	id={title.toLowerCase()}
+>
+	<div class={`mx-auto max-w-7xl py-8 sm:py-24`}>
+		<div
+			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
+		>
+			<div
+				class={` ${isCol ? "md:w-4xl mx-auto px-4 xl:px-10 mb-10" : "md:w-2/3 px-4 xl:px-0"} h-full ${
+					imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12"
+				} flex flex-col justify-between gap-4 sm:gap-8`}
+			>
+				<div>
+					<p
+						class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+					>
+						{header}
+					</p>
+					<h2 class={`${color} text-4xl/12 font-bold sm:text-6xl/18`}>{title}</h2>
+				</div>
+				<p class="text-lg sm:text-xl/8">{text}</p>
+			</div>
+			<div class={`mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}>
+				<Picture
+					src={image}
+					alt={title}
+					sizes="(max-width: 640px) 100vw, 800w"
+					formats={["avif", "webp"]}
+					fallbackFormat="jpg"
+					widths={[400, 800, 1200]}
+					class="h-full w-full rounded-lg object-cover"
+				/>
+			</div>
+		</div>
+		<div class="mx-auto flex w-full max-w-7xl flex-row justify-between py-8 sm:py-12">
+			{
+				cards.map((card) => (
+					<div class="space-y-2 p-4 text-base sm:w-96 sm:p-6 sm:text-lg/8">
+						<Icon name={card.icon} size="52" />
+						<p class="mt-4 text-lg font-bold sm:text-xl">{card.title}</p>
+						<p>{card.text}</p>
+					</div>
+				))
+			}
+		</div>
+		<figure class="border-text-secondary/20 relative mx-auto max-w-3xl border-y py-6 pt-10">
+			<figcaption class="mt-6 space-y-4 text-center">
+				<div class="mx-auto aspect-square h-20 w-auto">
+					<Picture
+						src={quote.image}
+						alt={quote.author}
+						sizes="200px"
+						formats={["avif", "webp"]}
+						fallbackFormat="jpg"
+						widths={[400, 800, 1200]}
+						class="h-full w-full rounded-lg object-cover"
+					/>
+				</div>
+				<blockquote class="relative z-10 px-20 text-center leading-relaxed sm:text-lg">
+					{quote.quote}
+				</blockquote>
+				<div
+					class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} font-semibold`}
+				>
+					{quote.author}, {quote.position}
+				</div>
+			</figcaption>
+		</figure>
+		{
+			button && button.link && (
+				<a
+					class={`${color} mt-8 flex justify-center text-center text-2xl underline underline-offset-4 hover:opacity-80 sm:mt-16`}
+					href={button.link}
+				>
+					{button.text}
+				</a>
+			)
+		}
+	</div>
+</section>

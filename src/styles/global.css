@@ -6,10 +6,11 @@
     --color-background: #FFFFFF;
     --color-background-light: #F7F7F7;
     --color-background-light-hover: #e7e5e4;
-
+    --color-background-dark: #1e1e1e;
     --color-text-primary: rgba(0, 0, 0, 0.8);
     --color-text-secondary: rgba(0, 0, 0, 0.55);
-
+    --color-text-dark: #dfdfdf;
+    --color-text-dark-mute: #979797;
     --color-orange: #F75B00;
     --color-link: #0D74E3;
 
@@ -19,6 +20,23 @@
     --color-accent-teal: #005E66;
     --color-accent-red: #B22B00;
     --color-accent-darkblue: #3622BB;
+    --color-accent-orange: #FF9F0A;
+
+    --animate-click: button-pop 0.2s ease-out;
+
+    @keyframes button-pop {
+        0% {
+            transform: scale(0.97);
+        }
+
+        40% {
+            transform: scale(1.02);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
 }
 
 @utility break-right {

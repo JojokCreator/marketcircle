@@ -1,0 +1,17 @@
+---
+const { author, position, quote } = Astro.props;
+---
+
+<figure
+	class="border-text-secondary/20 relative mx-auto my-12 max-w-3xl border-y py-6 pt-10 sm:my-32"
+>
+	<span class="absolute top-8 left-0 font-serif text-9xl text-gray-200">“</span>
+	<blockquote class="relative z-10 px-20 text-center leading-relaxed sm:text-lg">
+		{quote}
+	</blockquote>
+	<span class="absolute right-0 -bottom-8 font-serif text-9xl text-gray-200">”</span>
+	<figcaption class="mt-10 text-center">
+		<div class="text-text-primary font-semibold">{author}</div>
+		<div class="text-text-secondary mt-1">{position}</div>
+	</figcaption>
+</figure>

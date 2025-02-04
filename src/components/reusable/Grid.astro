@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	title: string;
+	text: string;
+	header: string;
+	cards: { title: string; link: string }[];
+}
+const { title, text, header, cards } = Astro.props;
+---
+
+<section class={`mx-auto max-w-7xl my-8 sm:my-32`}>
+	<div class={`flex flex-col justify-center text-center items-center`}>
+		<div
+			class={`px-4 xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-8 mx-auto max-w-4xl`}
+		>
+			<div>
+				<p
+					class={`text-text-secondary text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+				>
+					{header}
+				</p>
+				<h2 class={`text-3xl/12 font-bold sm:text-5xl/18`}>{title}</h2>
+			</div>
+			<p class="text-lg sm:text-xl/8">{text}</p>
+			<div
+				class="mx-auto grid w-full max-w-6xl grid-cols-3 flex-row justify-between gap-4 gap-y-4 py-8 sm:py-12"
+			>
+				{
+					cards.map((card, index) => (
+						<a
+							href={card.link}
+							class={`group hover:bg-background-light flex flex-col items-center justify-center space-y-2 rounded-xl py-4 text-base sm:text-lg/8 ${
+								index < 3
+									? "text-accent-teal"
+									: index < 6
+										? "text-accent-red"
+										: "text-accent-darkblue"
+							}`}
+						>
+							<Icon name={card.title.split(" ")[0].toLowerCase()} size="52" />
+							<p class="flex text-lg font-medium sm:text-xl">
+								{card.title}{" "}
+								<span class="ml-2 transition-transform duration-200 ease-in-out group-hover:translate-x-1.5">
+									{">"}
+								</span>
+								<div
+									class={`${
+										index < 3
+											? "bg-accent-teal"
+											: index < 6
+												? "bg-accent-red"
+												: "bg-accent-darkblue"
+									} mt-1.5 h-[3px] w-0 transition-all duration-500 group-hover:w-3/4`}
+								/>
+							</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
