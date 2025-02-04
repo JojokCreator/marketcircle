@@ -6,10 +6,19 @@ import macbook from "../assets/relationshipsMacbook.webp";
 import macbook2 from "../assets/dealsMaciphone.webp";
 import projects from "../assets/projectsMacbook.webp";
 import business from "../assets/growMacbook.webp";
+import apple from "../assets/apple-devices.webp";
 import gina from "../assets/ginabest.webp";
 import max from "../assets/max-black.webp";
 import jeremy from "../assets/jeremy.webp";
 import josh from "../assets/josh.webp";
+import appleCalendar from "../assets/apple-calendar.webp";
+import appleDevices from "../assets/apple-devices.webp";
+import appleFace from "../assets/apple-face-id.webp";
+import appleFaceTime from "../assets/apple-face-time.webp";
+import appleMail from "../assets/apple-mail.webp";
+import applePages from "../assets/apple-pages.webp";
+import appleSiri from "../assets/apple-siri.webp";
+import offline from "../assets/appleOffline.svg";
 import Button from "../components/reusable/Button.astro";
 import { Icon } from "astro-icon/components";
 import LogoBanner from "../components/reusable/LogoBanner.astro";
@@ -18,6 +27,7 @@ import Quote from "../components/reusable/Quote.astro";
 import Scroll from "../components/reusable/Scroll.astro";
 import Section from "../components/reusable/Section.astro";
 import Grid from "../components/reusable/Grid.astro";
+import FeaturedSection from "../components/reusable/FeaturedSection.astro";
 ---
 
 <Layout>
@@ -244,6 +254,52 @@ import Grid from "../components/reusable/Grid.astro";
 			{ title: "Manufacturing", link: "/manufacturing" },
 			{ title: "Photography & Videography", link: "/photography-videography" },
 			{ title: "Software", link: "/software" },
+		]}
+	/>
+	<FeaturedSection
+		isCol={true}
+		color="text-accent-orange"
+		bg="bg-background-dark"
+		title="Made for Mac, iPhone & iPad"
+		text="Daylite works seamlessly with many of the built-in Apple apps and features you already know and love."
+		image={appleDevices}
+		imageSide="left"
+		cards={[
+			{
+				title: "Apple Mail Integration",
+				icon: appleMail,
+				text: "Clear out your inbox and stay on top of next steps. Save emails to clients, appointments, and tasks so you have a full history of conversations in one place. Plus you can create tasks in Daylite right from Apple Mail.",
+			},
+			{
+				title: "Apple Calendar",
+				icon: appleCalendar,
+				text: "View your personal appointments in your Apple Calendar right in Daylite and vice versa.",
+			},
+			{
+				title: "Siri on iPhone & iPad",
+				icon: appleSiri,
+				text: "Add Reminders to your iPhone or iPad hands-free while you’re on the go, and have them sync to Daylite.",
+			},
+			{
+				title: "FaceTime & Caller ID",
+				icon: appleFaceTime,
+				text: "Start FaceTime calls right from Daylite and use CallerID by setting up Apple Contacts sharing.",
+			},
+			{
+				title: "FaceID & TouchID",
+				icon: appleFace,
+				text: "Keep your business data private by enabling FaceID, TouchID, and Passcode protection on iPhone and iPad.",
+			},
+			{
+				title: "Pages, Numbers & Keynote",
+				icon: applePages,
+				text: "Create contracts, reports, and other documents by pulling data from Daylite into Pages, Numbers, and Keynote (and of course, Microsoft Word and Excel).",
+			},
+			{
+				title: "Work Offline",
+				icon: offline,
+				text: "Slow internet or no internet? No problem! Unlike other CRMs and Project Management apps that need a web browser, Daylite is a real Mac and iOS app. Access your data anywhere, anytime in a flash.",
+			},
 		]}
 	/>
 </Layout>
