@@ -40,9 +40,9 @@ const { title, text, header, cards } = Astro.props;
 							}`}
 						>
 							<Icon name={card.title.split(" ")[0].toLowerCase()} size="52" />
-							<p class="flex text-lg font-medium sm:text-xl">
+							<p class="sm:text- flex text-lg font-medium whitespace-nowrap">
 								{card.title}{" "}
-								<span class="ml-2 transition-transform duration-200 ease-in-out group-hover:translate-x-1.5">
+								<span class="ml-2 transition-transform duration-200 ease-in-out group-hover:translate-x-1">
 									{">"}
 								</span>
 								<div

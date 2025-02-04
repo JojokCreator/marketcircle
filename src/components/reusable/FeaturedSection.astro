@@ -1,0 +1,76 @@
+---
+import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	isCol?: boolean;
+	color: string;
+	bg: string;
+	title: string;
+	text: string;
+	image: ImageMetadata;
+	imageSide?: "left" | "right";
+	cards: { title: string; text: string; icon: ImageMetadata }[];
+}
+const { isCol = false, title, text, image, imageSide = "left", cards, bg, color } = Astro.props;
+---
+
+<section
+	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24`}
+	id={title.toLowerCase()}
+>
+	<div class={`mx-auto max-w-5xl py-8 sm:py-24`}>
+		<div
+			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
+		>
+			<div
+				class={` ${isCol ? "md:max-w-4xl mx-auto px-4 xl:px-10 mb-10" : "md:w-2/3 px-4 xl:px-0"} h-full ${
+					imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12"
+				} flex flex-col justify-between gap-4 sm:gap-8`}
+			>
+				<div>
+					<h2 class={`${color} text-4xl/12 font-bold sm:text-6xl/18`}>{title}</h2>
+				</div>
+				<p class="text-lg sm:text-xl/8">{text}</p>
+			</div>
+			<div class={`mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}>
+				<Picture
+					src={image}
+					alt={title}
+					sizes="(max-width: 640px) 100vw, 800w"
+					formats={["avif", "webp"]}
+					fallbackFormat="jpg"
+					widths={[400, 800, 1200]}
+					class="h-full w-full rounded-lg object-cover"
+				/>
+			</div>
+		</div>
+		<div
+			class="mx-auto grid w-full max-w-7xl grid-cols-2 flex-row justify-between gap-4 py-8 sm:gap-16 sm:py-12"
+		>
+			{
+				cards.map((card, index) => (
+					<div class="last:border-background-light/20 flex flex-col space-y-2 p-4 text-base last:col-span-2 last:mt-12 last:items-center last:border-t last:px-10 last:text-center sm:p-6 sm:text-lg/8 last:sm:mt-16">
+						<div class="aspect-square h-auto w-20">
+							<Picture
+								src={card.icon}
+								alt={card.title}
+								sizes="100px"
+								formats={["avif", "webp"]}
+								fallbackFormat="jpg"
+								widths={[400, 800, 1200]}
+								class="h-full w-full rounded-lg object-contain"
+							/>
+						</div>
+						<p
+							class={`${index === cards.length - 1 ? "text-accent-orange mx-auto max-w-xl pb-4 text-xl sm:text-2xl" : "text-lg sm:text-xl"} mt-4 font-bold`}
+						>
+							{card.title}
+						</p>
+						<p class={`${index === cards.length - 1 ? "mx-auto max-w-xl" : ""}`}>{card.text}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
