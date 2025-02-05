@@ -1,0 +1,68 @@
+---
+import Button from "./reusable/Button.astro";
+
+const { daylitePlans } = Astro.props;
+---
+
+<div class="mx-auto max-w-7xl px-4 py-8">
+	{/* Pricing Grid */}
+	<div
+		class="top-[86px] z-50 grid grid-cols-1 place-items-center gap-2 bg-white sm:sticky sm:gap-6 md:grid-cols-5"
+	>
+		<div class="mb-8">
+			<h2 class="text-center text-2xl font-bold sm:text-start">Compare features</h2>
+		</div>
+		{
+			daylitePlans.map((tier: { plan: string; priceYear: string }) => (
+				<div class="border-background-light-hover mb-4 hidden w-full flex-col rounded-lg border p-6 sm:flex">
+					<p class="mb-4 text-center text-xl font-bold">{tier.plan}</p>
+					<div class="mb-8 flex items-center justify-center gap-2">
+						{tier.priceYear && (
+							<p class="text-center text-2xl font-bold">{tier.priceYear.replace("GBP", "")}</p>
+						)}
+						<div class="text-text-secondary text-center text-sm">per month</div>
+					</div>
+					<Button buttonText="Get Started" link="/signup/" type="filled" class="w-full" />
+				</div>
+			))
+		}
+	</div>
+
+	{/* Feature Comparison */}
+	<div class="space-y-4">
+		<div class="border-background-light-hover overflow-hidden rounded-lg border">
+			<div class="flex cursor-pointer flex-col items-center justify-between">
+				{
+					daylitePlans.map((plan: { plan: string }, i: number) => (
+						<details
+							open={i === 0}
+							class="border-background-light-hover group w-full overflow-hidden border-b transition-all duration-500 ease-in-out sm:rounded-xl sm:rounded-b-none [&::details-content]:h-0 [&::details-content]:transition-[block-size,content-visibility] [&::details-content]:duration-1000 [&[open]::details-content]:h-auto"
+						>
+							<summary class="text-accent-blue hover:bg-background-light relative grid w-full cursor-pointer grid-cols-5 items-center p-4 px-2 text-lg leading-tight font-semibold sm:flex sm:px-6 sm:text-xl [&>h2]:after:float-right [&>h2]:after:block [&>h2]:after:rotate-90 [&>h2]:after:transition-transform [&>h2]:after:duration-300 [&>h2]:after:ease-out [&>h2]:after:content-['▲'] group-open:[&>h2]:after:rotate-180">
+								<h2 class="w-full">{plan.plan}</h2>
+								<p class="text-center text-xs sm:hidden">CRM</p>
+								<p class="text-center text-xs sm:hidden">Sales</p>
+								<p class="text-center text-xs sm:hidden">Projects</p>
+								<p class="text-center text-xs sm:hidden">Business</p>
+							</summary>
+							<div class="p-4">
+								{[...new Set(daylitePlans.flatMap((p: { features: any }) => p.features))].map(
+									(feature) => (
+										<div class="mb-2 grid w-full grid-cols-5 sm:mb-0">
+											<div class="text-xs sm:p-2 sm:text-base">{feature}</div>
+											{daylitePlans.map((p: { features: unknown[] }) => (
+												<div class="text-center sm:p-2">
+													{p.features.includes(feature) ? "✓" : "✗"}
+												</div>
+											))}
+										</div>
+									),
+								)}
+							</div>
+						</details>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</div>

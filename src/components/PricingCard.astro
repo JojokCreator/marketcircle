@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./reusable/Button.astro";
+
+const { plan, priceMonth, priceYear, features, pill } = Astro.props;
+---
+
+<div class="border-background-light-hover w-[300px] overflow-hidden rounded-lg border">
+	<div class="flex items-center justify-between p-6">
+		<h2 class="text-2xl font-bold text-[#002B54]">{plan}</h2>
+		{
+			pill && (
+				<div class="bg-accent-blue/10 border-accent-blue text-text-primary mt-1 flex h-6 items-center rounded-full px-2 font-sans text-xs no-underline focus:outline-none active:shadow-none sm:ml-2">
+					{pill}
+				</div>
+			)
+		}
+	</div>
+
+	<div class="space-y-6 px-6 pb-6">
+		<div class="space-y-2">
+			<p
+				data-price-year={priceYear}
+				data-price-month={priceMonth}
+				class="text-text-primary text-2xl font-bold"
+			>
+				{priceMonth}
+			</p>
+			<p class="text-text-light text-sm">per month | per user</p>
+		</div>
+		<Button buttonText="Get Started" link="/signup/" type="filled" class="w-full" />
+		<div class="space-y-4">
+			<p class="text-sm font-medium">Included features:</p>
+			<ul class="space-y-3">
+				{
+					features.map((feature: string) => (
+						<li class="flex items-center gap-2">
+							<Icon class="mb-1.5 h-4 w-4 flex-shrink-0 sm:mb-1" name="tick" />
+							<span class="border-b border-dotted border-gray-300 pb-1 text-sm">{feature}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</div>

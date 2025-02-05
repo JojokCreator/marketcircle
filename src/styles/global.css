@@ -46,3 +46,5 @@
 @utility break-left {
     margin-left: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
 }
+
+@custom-variant dialog-open (&[open]);
