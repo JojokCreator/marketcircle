@@ -1,0 +1,32 @@
+---
+import Button from "./Button.astro";
+import flower from "../../assets/flower.svg";
+import { Picture } from "astro:assets";
+---
+
+<section class="bg-background-light mb-12 w-screen py-12 sm:mb-32 sm:py-32">
+	<div class="mx-auto flex w-screen max-w-4xl flex-col items-center justify-center p-6 sm:flex-row">
+		<div class={` mx-auto max-w-32`}>
+			<Picture
+				src={flower}
+				alt={"flower"}
+				sizes="(max-width: 640px) 100vw, 400w"
+				formats={["avif", "webp"]}
+				fallbackFormat="jpg"
+				widths={[400, 800, 1200]}
+				class="h-full w-full rounded-lg object-cover"
+			/>
+		</div>
+		<div class="mx-auto max-w-4xl text-center">
+			<h2 class="text-accent-green mb-8 text-4xl/12 font-bold md:text-5xl/16">
+				Ready to Close More<br /> Deals with Daylite?
+			</h2>
+			<Button
+				buttonText="Start Free Trial"
+				link="/signup/"
+				type="filled"
+				class="mx-auto my-6 w-72 py-5 text-xl lg:my-0"
+			/>
+		</div>
+	</div>
+</section>

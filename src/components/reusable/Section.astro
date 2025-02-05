@@ -9,8 +9,8 @@ interface Props {
 	bg: string;
 	title: string;
 	header: string | { icon: string };
-	text: string;
-	image: ImageMetadata;
+	text?: string;
+	image?: ImageMetadata;
 	imageSide?: "left" | "right";
 	breakOut?: "left" | "right" | false;
 	button?: { link: string; text: string };
@@ -61,21 +61,26 @@ const {
 					}
 					<h2 class={`${color} text-4xl/12 font-bold sm:text-6xl/18`}>{title}</h2>
 				</div>
-				<p class="text-lg sm:text-xl/8">{text}</p>
+				{text && <p class="text-lg sm:text-xl/8">{text}</p>}
+				<slot />
 			</div>
-			<div
-				class={`${breakOut === "right" ? "break-right md:w-full" : breakOut === "left" ? "break-left" : "w-1/2"} mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}
-			>
-				<Picture
-					src={image}
-					alt={title}
-					sizes="(max-width: 640px) 100vw, 800w"
-					formats={["avif", "webp"]}
-					fallbackFormat="jpg"
-					widths={[400, 800, 1200]}
-					class="h-full w-full rounded-lg object-cover"
-				/>
-			</div>
+			{
+				image && (
+					<div
+						class={`${breakOut === "right" ? "break-right md:w-full" : breakOut === "left" ? "break-left" : "w-1/2"} mx-auto mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-5xl" : "md:w-full"}`}
+					>
+						<Picture
+							src={image}
+							alt={title}
+							sizes="(max-width: 640px) 100vw, 800w"
+							formats={["avif", "webp"]}
+							fallbackFormat="jpg"
+							widths={[400, 800, 1200]}
+							class="h-full w-full rounded-lg object-cover"
+						/>
+					</div>
+				)
+			}
 		</div>
 		{
 			cards && cards.length > 0 && (

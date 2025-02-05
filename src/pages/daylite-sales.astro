@@ -1,0 +1,153 @@
+---
+import ImageText from "../components/reusable/ImageText.astro";
+import Layout from "../layouts/Layout.astro";
+import hero from "../assets/sales/close.webp";
+import take from "../assets/sales/take.webp";
+import master from "../assets/sales/master.webp";
+import capture from "../assets/sales/capture.webp";
+import fuel from "../assets/sales/fuel.webp";
+import keep from "../assets/sales/keep.webp";
+import control from "../assets/sales/control.webp";
+import send from "../assets/sales/send.webp";
+import report from "../assets/sales/report.webp";
+import Button from "../components/reusable/Button.astro";
+import { Icon } from "astro-icon/components";
+import LogoBanner from "../components/reusable/LogoBanner.astro";
+import Section from "../components/reusable/Section.astro";
+import CTA from "../components/reusable/CTA.astro";
+import Flower from "../components/reusable/Flower.astro";
+---
+
+<Layout>
+	<ImageText
+		first={true}
+		title="Daylite Sales"
+		titleColor="text-accent-green"
+		imageSide="right"
+		image={hero}
+	>
+		<p class="text-lg sm:text-xl/8">
+			Daylite helps you increase revenue while you grow your client base. Have a holistic view of
+			your sales pipeline and keep track of all your potential business opportunities, so you and
+			your sales team can shorten the sales cycle and close more deals.
+		</p>
+		<Button
+			buttonText="Start Free Trial"
+			link="/signup/"
+			type="filled"
+			class="my-6 w-52 py-5 text-xl lg:my-0"
+		/>
+		<p class="text-sm sm:text-base">
+			<Icon name="apple" class="mr-2 mb-1 inline" /> Only for Mac, iPhone, and iPad
+		</p>
+	</ImageText>
+	<Section
+		isCol={true}
+		color="text-accent-green"
+		bg="bg-white"
+		title="Take Control of Your Sales"
+		header={{ icon: "dollar-green" }}
+		text="Acquiring new business often means juggling multiple open deals at a time, each with its own time frame and requirements based on each potential client’s needs. Having a unified view of your sales pipeline is crucial if you want to keep moving your deals forward. Daylite’s Opportunities Board lets you visually track the status of your opportunities across your whole team so you can identify any bottlenecks early in your sales process, as well as which ones you should focus on."
+		image={take}
+		imageSide="right"
+		cards={[
+			{
+				icon: "target-green",
+				title: "Prioritize Your Deals",
+				text: "Sort your deals by value, forecasted close date, probability, owner and more to ensure you’re prioritizing the most valuable or urgent deals first. You can also track which sources are the most profitable so you can make better decisions about where to focus your team’s time and energy.",
+			},
+			{
+				icon: "avatars-green",
+				title: "Oversee Your Sales Team",
+				text: "See how many deals your team has in the pipeline and the status of each opportunity, so you can ensure everyone is hitting their targets and receiving the support they need to be successful. Spend less time on status update meetings so your team can stay focused on closing more deals.",
+			},
+			{
+				icon: "gears-green",
+				title: "Streamline Your Sales Process",
+				text: "Daylite allows you to define each stage of your sales process so you can be sure you and your team will follow the correct steps for every deal. Finally, you can take control of your sales process. From the initial contact to signing the contract, having clear and defined steps help you close deals faster.",
+			},
+		]}
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-light"
+		title="Master Your Sales Actions"
+		header={{ icon: "arrow-green" }}
+		text="Closing a deal can sometimes take weeks or even months, and you don’t want to lose out on an opportunity because you forgot a critical step in your sales process. Daylite helps you keep your promises and stay on top of tasks and due dates so you can send quotes, follow up with clients and check in when you haven’t heard back. With Daylite, nothing slips through the cracks."
+		image={master}
+		breakOut="right"
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-light"
+		title="Capture Every Business Opportunity"
+		header={{ icon: "envelope-green" }}
+		text="With Daylite's Mail Assistant, you can capture a lead directly from Apple Mail, create a new opportunity right from your inbox, or take action on an item such as scheduling an appointment or creating a task to follow up with the lead. You can even delegate the lead to a different sales agent. With Daylite, it's easy to capture an opportunity wherever it comes from, whether it’s from an email, sales call, or face-to-face meeting, regardless of whether you are at home, the office, or on the road."
+		image={capture}
+		imageSide="left"
+		breakOut="left"
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-dark"
+		title="Fuel Repeat Business"
+		header={{ icon: "arrows-green" }}
+		text="Effortlessly maintain lists of past clients with Daylite, so you can send out marketing campaigns to stay top of mind. Daylite gives you the tools to proactively drive more repeat business, often a forgotten source of revenue for small business."
+		image={fuel}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-light"
+		title="Keep Up With Key Details"
+		header={{ icon: "doc-green" }}
+		text="Staying on top over every detail of every opportunity is effortless with Daylite. You and your team can easily access and review the full history of every deal, including emails, call notes, meetings, files and more. If the team member who owns the opportunity is unavailable, you can assign a different salesperson to follow up with the deal. Everyone in the team can see where they last left off, so they can catch up and easily engage with the customer again. With Daylite, nothing slips through the cracks, and your deals keep moving forward."
+		image={keep}
+		imageSide="right"
+	/>
+	<Section
+		color="text-accent-green"
+		bg="bg-background-white"
+		title="Control Access & Permissions"
+		header={{ icon: "lock-green" }}
+		text="Every business has information that should remain private. Daylite gives you peace of mind by offering control over confidential information like quotes, emails and documents, letting you decide which team members can access client details. You can make information fully private, or only share it with specific departments."
+		image={control}
+		imageSide="right"
+	/>
+	<Section
+		isCol={true}
+		color="text-accent-green"
+		bg="bg-background-dark"
+		title="Send Estimates"
+		header={{ icon: "calc-green" }}
+		text="Speed up your sales process with Daylite’s Estimates. You and your sales team can easily create detailed quotes and estimates giving your potential clients all the information they need to make a quick decision to do business with you. Having accurate estimates and quotes also allows you to track the value of your opportunities, so you can strategically focus on the most valuable ones first."
+		image={send}
+	/>
+	<Section
+		isCol={true}
+		color="text-accent-green"
+		bg="bg-background-light"
+		title="Report on Sales"
+		header={{ icon: "graph-green" }}
+		text="Get the insights you need to continually improve your sales process. Daylite helps you track sales progress such as each agent’s close rates, the reasons an opportunity was won or lost, and helps forecast sales in your pipeline. Daylite can provide valuable insights to help close deals faster."
+		image={report}
+	/>
+	<Section
+		isCol={true}
+		color="text-accent-green"
+		bg="bg-white"
+		title="Integrations and More"
+		header={{ icon: "puzzle-green" }}
+	>
+		<p class="text-lg sm:text-xl/8">
+			Whether you need help capturing leads directly from your website or automatically adding
+			clients to your marketing campaign, Daylite offers a full range of <a
+				class="text-accent-darkblue font-medium underline hover:opacity-80"
+				href="/add-ons/">integration</a
+			> options to reach your sales goals.
+		</p>
+	</Section>
+	<Flower />
+	<LogoBanner />
+</Layout>
