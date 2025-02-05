@@ -1,0 +1,167 @@
+---
+import FAQ from "../components/FAQ.astro";
+import PricingCard from "../components/PricingCard.astro";
+import PricingFeatures from "../components/PricingFeatures.astro";
+import Layout from "../layouts/Layout.astro";
+import LogoBanner from "../components/reusable/LogoBanner.astro";
+import Call from "../components/reusable/Call.astro";
+
+const daylitePlans = [
+	{
+		plan: "CRM",
+		priceYear: "£15 GBP",
+		priceMonth: "£18 GBP",
+		features: [
+			"Free Expert Setup Help",
+			"Contact Management",
+			"Task Management",
+			"Daylite Mail Assistant for Apple Mail or Outlook",
+			"List Segmentation",
+			"Daylite Calendar",
+			"Mac and iOS apps",
+			"Linking capability",
+			"Forms",
+			"Delegation and Permission",
+			"Email/Letter Templates",
+			"Activity Sets",
+			"Customizations",
+			"Timeline Tracking",
+			"Integrations",
+		],
+	},
+	{
+		plan: "Sales",
+		priceYear: "£24.17 GBP",
+		priceMonth: "£29 GBP",
+		features: [
+			"Free Expert Setup Help",
+			"All of CRM",
+			"Sales Management",
+			"Sales Opportunities Board",
+			"Sales Pipelines",
+			"Lead Management",
+			"Sales Reporting",
+			"Sales Opportunities",
+			"Quotes/Estimates",
+			"Lead Scoring",
+			"Referral Tracking",
+		],
+	},
+	{
+		plan: "Projects",
+		priceYear: "£24.17 GBP",
+		priceMonth: "£29 GBP",
+		features: [
+			"Free Expert Setup Help",
+			"All of CRM",
+			"Project Management",
+			"Projects",
+			"Projects Board",
+			"Projects Pipeline",
+			"Milestone Tracking",
+			"Projects Reporting",
+		],
+	},
+	{
+		plan: "Business",
+		pill: "Complete Daylite Suite",
+		priceYear: "£35 GBP",
+		priceMonth: "£42 GBP",
+		billing: "per month | per user | billed annually",
+		features: ["All of CRM", "All of Sales", "All of Projects"],
+	},
+];
+
+function accumulateFeatures(plans: any[]) {
+	let accumulatedFeatures = [];
+
+	return plans.map((plan: { features: any }, index: number) => {
+		if (index === 1 || index === 2) {
+			accumulatedFeatures = [...plans[0].features, ...plan.features];
+		} else if (index === plans.length - 1) {
+			accumulatedFeatures = plans.flatMap((p: { features: any }) => p.features);
+		} else {
+			accumulatedFeatures = [...plan.features];
+		}
+		accumulatedFeatures = accumulatedFeatures.filter((f: string) => !f.startsWith("All "));
+
+		return { ...plan, features: accumulatedFeatures };
+	});
+}
+
+const updatedPlans = accumulateFeatures(daylitePlans);
+---
+
+<Layout>
+	<div class="mx-auto max-w-7xl py-24 sm:py-36">
+		<p
+			class="text-text-secondary mx-auto max-w-4xl px-4 text-center text-lg font-semibold tracking-wide uppercase sm:text-xl/10 xl:px-0"
+		>
+			Daylite is exclusively for Mac, iPhone, and iPad
+		</p>
+		<h2 class="mx-auto max-w-4xl px-4 text-center text-4xl/12 font-bold sm:text-6xl/18 xl:px-0">
+			Choose the Right Plan for Your Business
+		</h2>
+		<div class="mt-12 mb-4 flex w-full justify-center gap-2 sm:mt-16 sm:justify-end">
+			<button
+				class="aria-selected:text-accent-blue hover:bg-background-light rounded-lg p-1 transition-colors duration-200 ease-in hover:cursor-pointer aria-selected:pointer-events-none aria-selected:font-semibold"
+				id="toggleMonth"
+				data-type="month"
+				aria-selected="true">Billed Month</button
+			>
+			<p class="p-1">|</p>
+			<button
+				class="aria-selected:text-accent-blue hover:bg-background-light rounded-lg p-1 transition-colors duration-200 ease-in hover:cursor-pointer aria-selected:pointer-events-none aria-selected:font-semibold"
+				id="toggleYear"
+				data-type="year"
+				aria-selected="false">Billed Yearly</button
+			>
+			<div
+				class="bg-accent-blue/10 border-accent-blue text-text-primary mt-1 flex h-6 items-center rounded-full px-4 font-sans text-xs no-underline focus:outline-none active:shadow-none sm:ml-2"
+			>
+				Save 20%
+			</div>
+		</div>
+		<div
+			class="mx-auto grid max-w-7xl grid-cols-1 place-items-center gap-6 sm:grid-cols-2 sm:place-items-start sm:gap-8 lg:grid-cols-4 lg:gap-16"
+		>
+			{
+				daylitePlans.map((plan) => (
+					<PricingCard
+						{...plan}
+						data-price-month={plan.priceMonth}
+						data-price-year={plan.priceYear}
+					/>
+				))
+			}
+		</div>
+		<PricingFeatures daylitePlans={updatedPlans} />
+		<Call />
+		<FAQ />
+	</div>
+	<LogoBanner />
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const buttons = document.querySelectorAll("[data-type]");
+			const priceElements = document.querySelectorAll("[data-price-month]");
+
+			buttons.forEach((button) => {
+				button.addEventListener("click", () => {
+					const selectedType = button.getAttribute("data-type");
+
+					// Update prices
+					priceElements.forEach((element) => {
+						const monthPrice = element.getAttribute("data-price-month");
+						const yearPrice = element.getAttribute("data-price-year");
+
+						element.textContent = selectedType === "year" ? yearPrice : monthPrice;
+					});
+
+					// Update button states
+					buttons.forEach((btn) => btn.setAttribute("aria-selected", "false"));
+					button.setAttribute("aria-selected", "true");
+				});
+			});
+		});
+	</script>
+</Layout>
