@@ -1,0 +1,49 @@
+---
+import Button from "../components/reusable/Button.astro";
+import CenterHero from "../components/reusable/CenterHero.astro";
+import Layout from "../layouts/Layout.astro";
+import doThings from "../assets/why/do-big-things.png";
+import ImageText from "../components/reusable/ImageText.astro";
+---
+
+<Layout>
+	<CenterHero title="Your Ultimate Apple Small Business Companion">
+		<p class="text-lg sm:text-xl/8">
+			Discover the secret to efficiently managing your day-to-day activities, customer interactions,
+			deals, and projects, all within a single, comprehensive platform.
+		</p>
+		<div class="mt-4 flex justify-center gap-2 sm:mt-8">
+			<Button
+				buttonText="Start Free Trial"
+				link="/signup/"
+				type="filled"
+				class="my-6 w-52 py-5 text-xl lg:my-0"
+			/>
+			<Button
+				buttonText="Talk With Us First"
+				link="/signup/"
+				type="dark"
+				class="my-6 w-52 py-5 text-xl lg:my-0"
+			/>
+		</div>
+		<p class="text-text-secondary my-4 text-center text-sm sm:text-base">
+			Get full access. No credit card required.
+		</p>
+	</CenterHero>
+	<ImageText
+		bg="bg-background-light-hover -mb-3"
+		first={false}
+		title="Small Businesses Do Big Things"
+		imageSide="right"
+		image={doThings}
+	>
+		<p class="text-lg sm:text-xl/8">
+			You inspire us! The passion you show to entrepreneurship, personalized customer service and
+			your community drive us to create tools that make it easier for small businesses like yours to
+			deliver value to your clients.
+		</p>
+		<p class="text-2xl font-semibold sm:text-3xl/12">
+			Daylite exists to help you achieve your vision.
+		</p>
+	</ImageText>
+</Layout>
