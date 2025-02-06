@@ -4,15 +4,60 @@ import CenterHero from "../components/reusable/CenterHero.astro";
 import Layout from "../layouts/Layout.astro";
 import doThings from "../assets/why/do-big-things.png";
 import ImageText from "../components/reusable/ImageText.astro";
+import WhyBlocks from "../components/reusable/WhyBlocks.astro";
+import laptop from "../assets/why/laptop.jpg";
+import people from "../assets/why/people.jpg";
+import person from "../assets/why/person.jpg";
+import clients from "../assets/why/clients.jpg";
+import apple from "../assets/why/apple.jpg";
+import Section from "../components/reusable/Section.astro";
+import List from "../components/List.astro";
+import why from "../assets/why/why.webp";
+import whyList from "../assets/why/why-bg.jpg";
+import whyListMobile from "../assets/why/why-bg-mobile.jpg";
+import ButtonCTA from "../components/reusable/ButtonCTA.astro";
+import LogoBanner from "../components/reusable/LogoBanner.astro";
+
+const features = [
+	{
+		title: "Apple to The Core",
+		text: `<p>Daylite is exclusively for Mac, iPhone and iPad—not a Web app—and works seamlessly across your familiar Apple ecosystem of apps and devices.
+		</p><p class="mt-2">Intuitive, reliable and secure, Apple devices offer small businesses more productivity with less hassle and deliver superior value. <a href="#" class="text-blue-600 hover:underline">Learn why Mac means business</a></p>`,
+		image: apple,
+	},
+	{
+		title: "Simplify the Client Lifecycle",
+		text: "<p>You need to focus on your business, not juggling various apps. Daylite consolidates multiple tools—CRM, Sales and Project Management—into a single easy-to-use and highly customizable platform that supports every stage of your client work.</p>",
+		image: laptop,
+	},
+	{
+		title: "Genuine Client Connections",
+		text: `<p>Daylite is designed to help you forge stronger bonds with clients.
+        </p><p class="mt-2">Easy-to-use tools for tracking correspondence, running effective sales processes, and managing projects with professional efficiency that all give you more time to focus on deeper, more personal customer relationships.</p>`,
+		image: clients,
+	},
+	{
+		title: "Real People Ready to Help",
+		text: `<p>We prioritize human connection over algorithms with you too! We minimize automation in communications and make ourselves accessible to get you the personalized help you need.
+        </p><p class="mt-2">Experience it for yourself: <a href="#" class="text-blue-600"> book time with our team</a> to chat about how Daylite fits your business.</p>`,
+		image: people,
+	},
+	{
+		title: "Here for The Little Guys",
+		text: `<p>We tailor all our efforts to supporting the small businesses, independent professionals, creative contractors and freelancers ignored by enterprise-level CRM systems. <span class="text-bold">SMB is all we do!<span>
+        </p><p class="mt-2">Daylite empowers you with the flexible tools to compete in a world where corporate giants just keep getting bigger.</p>`,
+		image: person,
+	},
+];
 ---
 
 <Layout>
 	<CenterHero title="Your Ultimate Apple Small Business Companion">
-		<p class="text-lg sm:text-xl/8">
+		<p>
 			Discover the secret to efficiently managing your day-to-day activities, customer interactions,
 			deals, and projects, all within a single, comprehensive platform.
 		</p>
-		<div class="mt-4 flex justify-center gap-2 sm:mt-8">
+		<div class="mt-4 flex flex-col justify-center gap-2 sm:mt-8 sm:flex-row">
 			<Button
 				buttonText="Start Free Trial"
 				link="/signup/"
@@ -31,19 +76,88 @@ import ImageText from "../components/reusable/ImageText.astro";
 		</p>
 	</CenterHero>
 	<ImageText
-		bg="bg-background-light-hover -mb-3"
+		bg="bg-background-light-hover"
 		first={false}
 		title="Small Businesses Do Big Things"
 		imageSide="right"
 		image={doThings}
 	>
-		<p class="text-lg sm:text-xl/8">
+		<p class="sm:text-lg/ text-base">
 			You inspire us! The passion you show to entrepreneurship, personalized customer service and
 			your community drive us to create tools that make it easier for small businesses like yours to
 			deliver value to your clients.
 		</p>
-		<p class="text-2xl font-semibold sm:text-3xl/12">
+		<p class="text-2xl font-semibold sm:text-3xl/8">
 			Daylite exists to help you achieve your vision.
 		</p>
 	</ImageText>
+	<section class="bg-white">
+		<div class="mx-auto max-w-7xl pt-16 sm:pt-32">
+			<h2 class={`text-center mb-8 sm:mb-16`}>How We Help You Thrive</h2>
+			{features.map((feature, index) => <WhyBlocks {feature} {index} />)}
+		</div>
+	</section>
+	<Section
+		isCol={true}
+		color="text-text-primary"
+		bg="bg-gradient-to-b from-white to-background-light"
+		title="Why We Created Daylite"
+		header={"Our Story"}
+		image={why}
+	>
+		<div class="container mx-auto space-y-4 p-4">
+			<p class="font-semibold">We know how tough it can be running a small business.</p>
+			<p>
+				We used to own a technology consulting company. And like most small businesses, we worked
+				hard—and sometimes failed—at keeping track of the professional relationships and commitments
+				that drove our success. Trying to both code and nurture new business at the same time
+				stretched us too thin. Things tended to slip through the cracks.
+			</p>
+			<p>
+				We needed to streamline our work process, and find some solution that would help us get
+				organized and thrive. But when we looked for software that would work on our Mac operating
+				systems, we came up empty.
+			</p>
+			<p class="font-semibold">
+				So like most software developers, we decided to build that tool ourselves!
+			</p>
+			<p>
+				As it turned out, many other small businesses needed just the same thing. During a trip to
+				MacWorld in 2002, an Apple employee encouraged us to sell our tool.
+			</p>
+			<p class="font-semibold">And that's how Daylite was born.</p>
+			<p>
+				Now, more than 20 years later, we remain more committed than ever to empower small
+				organizations to dream big—by helping you simply get better doing what you do.
+			</p>
+		</div>
+	</Section>
+	<List
+		isCol={true}
+		color="text-text-primary"
+		bg="bg-background-light"
+		title="Work With Ease"
+		header={"Get Started Today"}
+		list={[
+			"Delivering your services",
+			"Leading and collaborating",
+			"Exceeding client expectations",
+			"Nurturing the passion for what you do",
+			"Meeting your personal obligations and dreams",
+		]}
+		image={whyList}
+		mobileImage={whyListMobile}
+	>
+		<div class="max-w-4xl space-y-4">
+			<p class="font-semibold">Are you running just to stay in place?</p>
+
+			<p>
+				You have a lot to look after when you manage a business. Daylite helps you get it all done
+				more efficiently, by simplifying what it takes to stay on top of clients, emails,
+				appointments, deals, projects and more.
+			</p>
+		</div>
+	</List>
+	<ButtonCTA />
+	<LogoBanner />
 </Layout>

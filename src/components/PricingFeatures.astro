@@ -10,7 +10,7 @@ const { daylitePlans } = Astro.props;
 		class="top-[86px] z-50 grid grid-cols-1 place-items-center gap-2 bg-white sm:sticky sm:gap-6 md:grid-cols-5"
 	>
 		<div class="mb-8">
-			<h2 class="text-center text-2xl font-bold sm:text-start">Compare features</h2>
+			<h2 class="text-center text-2xl sm:text-start">Compare features</h2>
 		</div>
 		{
 			daylitePlans.map((tier: { plan: string; priceYear: string }) => (
@@ -39,7 +39,7 @@ const { daylitePlans } = Astro.props;
 							class="border-background-light-hover group w-full overflow-hidden border-b transition-all duration-500 ease-in-out sm:rounded-xl sm:rounded-b-none [&::details-content]:h-0 [&::details-content]:transition-[block-size,content-visibility] [&::details-content]:duration-1000 [&[open]::details-content]:h-auto"
 						>
 							<summary class="text-accent-blue hover:bg-background-light relative grid w-full cursor-pointer grid-cols-5 items-center p-4 px-2 text-lg leading-tight font-semibold sm:flex sm:px-6 sm:text-xl [&>h2]:after:float-right [&>h2]:after:block [&>h2]:after:rotate-90 [&>h2]:after:transition-transform [&>h2]:after:duration-300 [&>h2]:after:ease-out [&>h2]:after:content-['▲'] group-open:[&>h2]:after:rotate-180">
-								<h2 class="w-full">{plan.plan}</h2>
+								<h2 class="w-full text-2xl sm:text-4xl/16">{plan.plan}</h2>
 								<p class="text-center text-xs sm:hidden">CRM</p>
 								<p class="text-center text-xs sm:hidden">Sales</p>
 								<p class="text-center text-xs sm:hidden">Projects</p>

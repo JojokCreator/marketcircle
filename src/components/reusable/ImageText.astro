@@ -35,9 +35,9 @@ const {
 			>
 				{
 					first ? (
-						<h1 class={`text-4xl/12 font-bold sm:text-6xl/18 ${titleColor}`}>{title}</h1>
+						<h1 class={`${titleColor}`}>{title}</h1>
 					) : (
-						<h2 class={`text-4xl/10 font-bold sm:text-6xl/16 ${titleColor}`}>{title}</h2>
+						<h2 class={`${titleColor}`}>{title}</h2>
 					)
 				}
 				<slot />
@@ -67,5 +67,4 @@ const {
 			</div>
 		</div>
 	</div>
-	s
 </section>

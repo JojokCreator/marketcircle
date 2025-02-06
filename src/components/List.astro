@@ -1,0 +1,101 @@
+---
+import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	id?: string;
+	isCol?: boolean;
+	color: string;
+	bg: string;
+	title: string;
+	header: string | { icon: string };
+	text?: string;
+	image?: ImageMetadata;
+	mobileImage?: ImageMetadata;
+	imageSide?: "left" | "right";
+	breakOut?: "left" | "right" | false;
+	list: string[];
+}
+const {
+	isCol = false,
+	title,
+	id,
+	header,
+	text,
+	image,
+	mobileImage,
+	imageSide = "left",
+	breakOut = false,
+	list,
+	bg,
+	color,
+} = Astro.props;
+---
+
+<section
+	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24`}
+	id={id ? id : title.toLowerCase()}
+>
+	<div class={`mx-auto max-w-7xl py-8 sm:py-24`}>
+		<div
+			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
+		>
+			<div
+				class={` ${isCol ? "md:w-7xl mx-auto px-4 xl:px-10 mb-10" : "md:w-2/3 px-4 xl:px-0"} h-full ${
+					imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12"
+				} flex flex-col justify-between gap-4 sm:gap-8`}
+			>
+				<div>
+					{
+						typeof header === "string" ? (
+							<p
+								class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+							>
+								{header}
+							</p>
+						) : (
+							<Icon name={header.icon} size="72" />
+						)
+					}
+					<h2 class={`${color}`}>{title}</h2>
+				</div>
+				{text && <p>{text}</p>}
+				<slot />
+			</div>
+			{
+				image && mobileImage && (
+					<div
+						class={`${breakOut === "right" ? "break-right md:w-full" : breakOut === "left" ? "break-left" : "w-full"} mx-auto mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-7xl" : "md:w-full"} relative`}
+					>
+						<Picture
+							src={image}
+							alt={title}
+							sizes="(max-width: 640px) 100vw, 800w"
+							formats={["avif", "webp"]}
+							fallbackFormat="jpg"
+							widths={[400, 800, 1200]}
+							class="hidden h-full w-full rounded-lg object-cover sm:block"
+						/>
+						<ul class="static top-0 left-0 flex h-full flex-col justify-center gap-2 px-2 sm:absolute sm:w-3/4 sm:px-10">
+							{list.map((item) => (
+								<li class="px-4 text-lg font-medium sm:text-2xl/10 sm:font-semibold">
+									<Icon name="list-check" class="mr-2 mb-1 inline sm:mb-0" />
+									{item}
+								</li>
+							))}
+						</ul>
+						<Picture
+							src={mobileImage}
+							alt={title}
+							sizes="(max-width: 640px) 100vw, 800w"
+							formats={["avif", "webp"]}
+							fallbackFormat="jpg"
+							widths={[400, 800, 1200]}
+							class="h-full w-full rounded-lg object-cover py-4 sm:hidden"
+						/>
+					</div>
+				)
+			}
+		</div>
+	</div>
+</section>
