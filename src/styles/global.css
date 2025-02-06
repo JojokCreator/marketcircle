@@ -48,3 +48,42 @@
 }
 
 @custom-variant dialog-open (&[open]);
+
+@layer base {
+    p {
+        font-size: var(--text-lg);
+    }
+
+    @media (min-width: theme('screens.sm')) {
+        p {
+            font-size: var(--text-xl);
+            line-height: 2rem;
+        }
+    }
+
+    h1 {
+        font-size: var(--text-4xl);
+        line-height: 3rem;
+        font-weight: bold;
+    }
+
+    @media (min-width: theme('screens.sm')) {
+        h1 {
+            font-size: var(--text-6xl);
+            line-height: 4.5rem;
+        }
+    }
+
+    h2 {
+        font-size: var(--text-4xl);
+        line-height: 3rem;
+        font-weight: bold;
+    }
+
+    @media (min-width: theme('screens.sm')) {
+        h2 {
+            font-size: var(--text-6xl);
+            line-height: 4.5rem;
+        }
+    }
+}

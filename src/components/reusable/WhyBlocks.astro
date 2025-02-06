@@ -1,0 +1,47 @@
+---
+import { Picture } from "astro:assets";
+import Button from "./Button.astro";
+
+const { feature, index } = Astro.props;
+const isEven = index % 2 === 0;
+---
+
+<div
+	class="bg-background-light mx-auto grid max-w-5xl place-items-start items-center gap-2 overflow-clip rounded-xl sm:mb-8 md:grid-cols-2"
+>
+	<div class={`space-y-4 p-8 sm:p-12 ${isEven ? "md:order-2" : "md:order-1"}`}>
+		<h2 class="text-2xl font-semibold">{feature.title}</h2>
+		<div set:html={feature.text} />
+		{
+			index === 4 && (
+				<div class="mt-4 flex flex-col justify-between gap-2 sm:mt-8 sm:flex-row">
+					<Button
+						buttonText="Start Free Trial"
+						link="/signup/"
+						type="filled"
+						class="my-6 w-44 py-4 sm:text-lg lg:my-0"
+					/>
+					<Button
+						buttonText="Talk With Us First"
+						link="/signup/"
+						type="dark"
+						class="my-6 w-44 py-4 sm:text-lg lg:my-0"
+					/>
+				</div>
+			)
+		}
+	</div>
+	<div
+		class={`${isEven ? "md:order-1" : "md:order-2"} h-full w-full p-2 sm:p-0 rounded-lg overflow-clip sm:rounded-none`}
+	>
+		<Picture
+			src={feature.image}
+			alt={feature.title}
+			sizes="(max-width: 640px) 100vw, 600w"
+			formats={["avif", "webp"]}
+			fallbackFormat="jpg"
+			widths={[400, 800, 1200]}
+			class={`${isEven ? "sm:rounded-l-lg" : "sm:rounded-l-lg"} rounded-lg h-full w-full object-cover`}
+		/>
+	</div>
+</div>

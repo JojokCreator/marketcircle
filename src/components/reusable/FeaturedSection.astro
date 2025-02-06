@@ -28,9 +28,9 @@ const { isCol = false, title, text, image, imageSide = "left", cards, bg, color 
 				} flex flex-col justify-between gap-4 sm:gap-8`}
 			>
 				<div>
-					<h2 class={`${color} text-4xl/12 font-bold sm:text-6xl/18`}>{title}</h2>
+					<h2 class={`${color}font-bold sm:text-6xl/18`}>{title}</h2>
 				</div>
-				<p class="text-lg sm:text-xl/8">{text}</p>
+				<p>{text}</p>
 			</div>
 			<div class={`mx-auto mt-4 md:mt-2 ${isCol ? "md:max-w-5xl mx-auto" : "md:w-full"}`}>
 				<Picture
