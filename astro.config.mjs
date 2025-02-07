@@ -8,6 +8,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
 	site: "https://example.com",
 	trailingSlash: "always",
+	server:{
+		host:true
+	  },
 	integrations: [icon(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()],

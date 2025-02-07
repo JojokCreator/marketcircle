@@ -14,18 +14,18 @@ const isEven = index % 2 === 0;
 		<div set:html={feature.text} />
 		{
 			index === 4 && (
-				<div class="mt-4 flex flex-col justify-between gap-2 sm:mt-8 sm:flex-row">
+				<div class="mt-4 flex flex-row justify-center gap-2 sm:mt-8">
 					<Button
 						buttonText="Start Free Trial"
 						link="/signup/"
 						type="filled"
-						class="my-6 w-44 py-4 sm:text-lg lg:my-0"
+						class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
 					/>
 					<Button
 						buttonText="Talk With Us First"
 						link="/signup/"
 						type="dark"
-						class="my-6 w-44 py-4 sm:text-lg lg:my-0"
+						class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
 					/>
 				</div>
 			)

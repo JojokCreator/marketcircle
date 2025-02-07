@@ -57,18 +57,18 @@ const features = [
 			Discover the secret to efficiently managing your day-to-day activities, customer interactions,
 			deals, and projects, all within a single, comprehensive platform.
 		</p>
-		<div class="mt-4 flex flex-col justify-center gap-2 sm:mt-8 sm:flex-row">
+		<div class="mt-4 flex flex-row justify-center gap-2 sm:mt-8">
 			<Button
 				buttonText="Start Free Trial"
 				link="/signup/"
 				type="filled"
-				class="my-6 w-52 py-5 text-xl lg:my-0"
+				class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
 			/>
 			<Button
 				buttonText="Talk With Us First"
 				link="/signup/"
 				type="dark"
-				class="my-6 w-52 py-5 text-xl lg:my-0"
+				class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
 			/>
 		</div>
 		<p class="text-text-secondary my-4 text-center text-sm sm:text-base">
@@ -93,7 +93,7 @@ const features = [
 	</ImageText>
 	<section class="bg-white">
 		<div class="mx-auto max-w-7xl pt-16 sm:pt-32">
-			<h2 class={`text-center mb-8 sm:mb-16`}>How We Help You Thrive</h2>
+			<h2 class={`text-center mb-8 sm:mb-16 px-4 sm:px-0`}>How We Help You Thrive</h2>
 			{features.map((feature, index) => <WhyBlocks {feature} {index} />)}
 		</div>
 	</section>
@@ -105,7 +105,7 @@ const features = [
 		header={"Our Story"}
 		image={why}
 	>
-		<div class="container mx-auto space-y-4 p-4">
+		<div class="container mx-auto space-y-4">
 			<p class="font-semibold">We know how tough it can be running a small business.</p>
 			<p>
 				We used to own a technology consulting company. And like most small businesses, we worked
