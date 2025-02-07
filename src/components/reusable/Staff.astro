@@ -7,12 +7,12 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 );
 ---
 
-<div class="my-12 w-screen sm:my-32">
+<div class="my-12 w-screen md:my-32">
 	<div
-		class="mx-auto flex h-full max-w-7xl flex-col-reverse items-start justify-evenly gap-4 p-4 sm:flex-row sm:gap-16 sm:p-0 sm:py-8"
+		class="mx-auto flex h-full max-w-7xl flex-col-reverse items-center justify-evenly gap-4 p-4 md:flex-row md:items-start md:gap-16 md:p-0 md:py-8"
 	>
 		<div
-			class="grid grid-cols-2 items-center justify-center gap-4 gap-y-4 sm:grid-cols-3 sm:justify-between sm:gap-8 sm:gap-y-8"
+			class="grid grid-cols-2 items-center justify-center gap-4 gap-y-4 smw:grid-cols-3 md:justify-between md:gap-8 md:gap-y-8"
 		>
 			{
 				Object.keys(imageModules).map(async (image) => {
@@ -28,7 +28,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 								src={imageSrc.default}
 								alt={image}
 							/>
-							<p class="mt-4 text-center text-lg font-bold capitalize sm:text-xl">
+							<p class="mt-4 text-center text-lg font-bold capitalize md:text-xl">
 								{image.split("/").pop()!.split(".")[0]}
 							</p>
 						</div>
@@ -37,11 +37,11 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 			}
 		</div>
 		<div
-			class="flex h-full flex-col justify-start gap-4 text-center sm:w-1/3 sm:gap-8 sm:text-start"
+			class="flex h-full flex-col justify-start gap-4 text-center md:w-1/3 md:gap-8 md:text-start"
 		>
 			<div>
 				<p
-					class={`text-lg font-semibold tracking-wide uppercase sm:text-xl/10 text-text-secondary mb-2 sm:mb-0`}
+					class={`text-lg font-semibold tracking-wide uppercase md:text-xl/10 text-text-secondary mb-2 md:mb-0`}
 				>
 					Get Started
 				</p>
@@ -56,7 +56,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 				buttonText="Talk to an Advisor"
 				link="https://marketcircle.as.me/15-minute-daylite-demo/"
 				type="filledBlue"
-				class="mx-auto my-6 w-52 py-5 text-xl sm:mx-0 lg:my-0"
+				class="mx-auto my-6 w-52 py-5 text-xl md:mx-0 lg:my-0"
 			/>
 		</div>
 	</div>

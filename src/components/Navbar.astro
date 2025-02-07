@@ -149,17 +149,17 @@ const menu: { [key: string]: MenuItem }[] = [
 								class="menu group border-background-light-hover w-full cursor-pointer border-b bg-white py-2 lg:w-auto lg:border-transparent lg:bg-transparent"
 								aria-haspopup={!!value.values}
 							>
-								<div class="flex items-center justify-center space-x-2 px-2 lg:justify-between xl:px-4">
+								<div class="flex items-center justify-start space-x-2 px-2 lg:justify-between xl:px-4">
 									{value.link ? (
 										<a
 											href={value.link}
-											class="item my-2 py-2 text-lg font-medium whitespace-nowrap"
+											class="item my-2 py-2 text-lg font-semibold whitespace-nowrap lg:font-medium"
 										>
 											{key}
-											<div class="bg-orange mt-1.5 h-[3px] w-0 transition-all duration-500 group-hover:w-full" />
+											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full lg:block" />
 										</a>
 									) : (
-										<span class="item my-2 py-2 text-lg font-medium whitespace-nowrap">
+										<span class="item my-2 py-2 text-lg font-semibold whitespace-nowrap lg:font-medium">
 											{key}
 											{value.values && (
 												<Icon
@@ -167,7 +167,7 @@ const menu: { [key: string]: MenuItem }[] = [
 													class="inline transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180"
 												/>
 											)}
-											<div class="bg-orange mt-1.5 h-[3px] w-0 transition-all duration-500 group-hover:w-full" />
+											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full lg:block" />
 										</span>
 									)}
 								</div>
@@ -185,7 +185,7 @@ const menu: { [key: string]: MenuItem }[] = [
 												) : (
 													<div class="my-0.5 block px-4 pb-4 text-lg font-normal whitespace-nowrap">
 														<span
-															class={`${subIndex === 0 ? "text-orange" : subIndex === 1 ? "text-accent-blue" : "text-accent-purple"} ml-0.5 font-semibold tracking-wide uppercase`}
+															class={`${subIndex === 0 ? "text-orange" : subIndex === 1 ? "text-accent-blue" : "text-accent-purple"} ml-0.5 text-base font-semibold tracking-wide uppercase lg:text-lg`}
 														>
 															<Icon
 																name={subItem.title.toLowerCase().split(" ").join("-") + "-icon"}
@@ -223,7 +223,7 @@ const menu: { [key: string]: MenuItem }[] = [
 				<li class="border-background-light-hover w-full border-b lg:border-transparent">
 					<a
 						href="/account"
-						class="lg:text-text-secondary hover:bg-background-light-hover my-2 block px-3 pt-2 pb-4 text-center text-lg font-normal whitespace-nowrap lg:my-0.5 lg:rounded-lg lg:py-1"
+						class="lg:text-text-secondary lg:hover:bg-background-light-hover my-2 block px-5 pt-2 pb-4 text-start text-lg font-semibold whitespace-nowrap lg:my-0.5 lg:rounded-lg lg:px-3 lg:py-1 lg:text-center lg:font-normal"
 					>
 						My Account
 					</a>
