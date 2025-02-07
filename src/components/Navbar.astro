@@ -84,7 +84,7 @@ const menu: { [key: string]: MenuItem }[] = [
 ];
 ---
 
-<header class="fixed top-0 left-0 z-[999] w-screen bg-white/90 backdrop-blur-xl">
+<header class="fixed top-0 left-0 z-[50] w-screen bg-white/90 backdrop-blur-xl">
 	<nav
 		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between px-4 py-2 text-lg text-gray-700 lg:py-0"
 	>
@@ -172,7 +172,7 @@ const menu: { [key: string]: MenuItem }[] = [
 									)}
 								</div>
 								{value.values && (
-									<ul class="dropdown text-text-secondary divide-background-light-hover group-aria-expanded:max-h-[999px ease-in-out] top-14 z-50 mx-auto h-fit max-h-0 w-full min-w-52 flex-col overflow-hidden bg-white py-1 transition-all duration-500 lg:absolute lg:top-12 lg:left-1/2 lg:my-8 lg:hidden lg:max-h-fit lg:w-fit lg:-translate-x-1/2 lg:flex-row lg:divide-x lg:overflow-visible lg:bg-white lg:py-4 lg:shadow-xl lg:group-hover:flex">
+									<ul class="dropdown text-text-secondary divide-background-light-hover top-14 z-50 mx-auto h-fit max-h-0 w-full min-w-52 flex-col overflow-hidden bg-white py-1 transition-all duration-500 ease-in-out group-aria-expanded:max-h-[999px] lg:absolute lg:top-12 lg:left-1/2 lg:my-8 lg:hidden lg:max-h-fit lg:w-fit lg:-translate-x-1/2 lg:flex-row lg:divide-x lg:overflow-visible lg:bg-white lg:py-4 lg:shadow-xl lg:group-hover:flex">
 										{value.values.map((subItem, subIndex) => (
 											<li class="lg:py-2">
 												{"text" in subItem ? (
@@ -242,13 +242,13 @@ const menu: { [key: string]: MenuItem }[] = [
 </header>
 
 <script>
-	document.querySelectorAll(".item").forEach((ahref) => {
-		if (window.innerWidth < 1024) {
-			ahref.addEventListener("click", (e) => {
-				e.preventDefault();
-			});
-		}
-	});
+	// document.querySelectorAll(".item").forEach((ahref) => {
+	// 	if (window.innerWidth < 1024) {
+	// 		ahref.addEventListener("click", (e) => {
+	// 			e.preventDefault();
+	// 		});
+	// 	}
+	// });
 
 	document.querySelectorAll(".group.menu").forEach((dropdown) => {
 		dropdown.addEventListener("click", () => {
