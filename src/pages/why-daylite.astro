@@ -21,31 +21,31 @@ import LogoBanner from "../components/reusable/LogoBanner.astro";
 const features = [
 	{
 		title: "Apple to The Core",
-		text: `<p>Daylite is exclusively for Mac, iPhone and iPad—not a Web app—and works seamlessly across your familiar Apple ecosystem of apps and devices.
-		</p><p class="mt-2">Intuitive, reliable and secure, Apple devices offer small businesses more productivity with less hassle and deliver superior value. <a href="#" class="text-blue-600 hover:underline">Learn why Mac means business</a></p>`,
+		text: `<p class='text-lg'>Daylite is exclusively for Mac, iPhone and iPad—not a Web app—and works seamlessly across your familiar Apple ecosystem of apps and devices.
+		</p><p class="mt-2 text-lg">Intuitive, reliable and secure, Apple devices offer small businesses more productivity with less hassle and deliver superior value. <a href="#" class="text-blue-600 hover:underline">Learn why Mac means business</a></p>`,
 		image: apple,
 	},
 	{
 		title: "Simplify the Client Lifecycle",
-		text: "<p>You need to focus on your business, not juggling various apps. Daylite consolidates multiple tools—CRM, Sales and Project Management—into a single easy-to-use and highly customizable platform that supports every stage of your client work.</p>",
+		text: "<p class='text-lg'>You need to focus on your business, not juggling various apps. Daylite consolidates multiple tools—CRM, Sales and Project Management—into a single easy-to-use and highly customizable platform that supports every stage of your client work.</p>",
 		image: laptop,
 	},
 	{
 		title: "Genuine Client Connections",
-		text: `<p>Daylite is designed to help you forge stronger bonds with clients.
-        </p><p class="mt-2">Easy-to-use tools for tracking correspondence, running effective sales processes, and managing projects with professional efficiency that all give you more time to focus on deeper, more personal customer relationships.</p>`,
+		text: `<p class='text-lg'>Daylite is designed to help you forge stronger bonds with clients.
+        </p><p class="mt-2 text-lg">Easy-to-use tools for tracking correspondence, running effective sales processes, and managing projects with professional efficiency that all give you more time to focus on deeper, more personal customer relationships.</p>`,
 		image: clients,
 	},
 	{
 		title: "Real People Ready to Help",
-		text: `<p>We prioritize human connection over algorithms with you too! We minimize automation in communications and make ourselves accessible to get you the personalized help you need.
-        </p><p class="mt-2">Experience it for yourself: <a href="#" class="text-blue-600"> book time with our team</a> to chat about how Daylite fits your business.</p>`,
+		text: `<p class='text-lg'>We prioritize human connection over algorithms with you too! We minimize automation in communications and make ourselves accessible to get you the personalized help you need.
+        </p><p class="mt-2 text-lg">Experience it for yourself: <a href="#" class="text-blue-600"> book time with our team</a> to chat about how Daylite fits your business.</p>`,
 		image: people,
 	},
 	{
 		title: "Here for The Little Guys",
-		text: `<p>We tailor all our efforts to supporting the small businesses, independent professionals, creative contractors and freelancers ignored by enterprise-level CRM systems. <span class="text-bold">SMB is all we do!<span>
-        </p><p class="mt-2">Daylite empowers you with the flexible tools to compete in a world where corporate giants just keep getting bigger.</p>`,
+		text: `<p class='text-lg'>We tailor all our efforts to supporting the small businesses, independent professionals, creative contractors and freelancers ignored by enterprise-level CRM systems. <span class="text-bold">SMB is all we do!<span>
+        </p><p class="mt-2 text-lg">Daylite empowers you with the flexible tools to compete in a world where corporate giants just keep getting bigger.</p>`,
 		image: person,
 	},
 ];
@@ -53,7 +53,7 @@ const features = [
 
 <Layout>
 	<CenterHero title="Your Ultimate Apple Small Business Companion">
-		<p>
+		<p class="text-lg">
 			Discover the secret to efficiently managing your day-to-day activities, customer interactions,
 			deals, and projects, all within a single, comprehensive platform.
 		</p>
@@ -87,13 +87,13 @@ const features = [
 			your community drive us to create tools that make it easier for small businesses like yours to
 			deliver value to your clients.
 		</p>
-		<p class="text-2xl font-semibold sm:text-3xl/8">
+		<p class="text-xl font-semibold lg:text-2xl/8 whitespace-nowrap pb-4">
 			Daylite exists to help you achieve your vision.
 		</p>
 	</ImageText>
 	<section class="bg-white">
-		<div class="mx-auto max-w-7xl pt-16 sm:pt-32">
-			<h2 class={`text-center mb-8 sm:mb-16 px-4 sm:px-0`}>How We Help You Thrive</h2>
+		<div class="sm:px- mx-auto max-w-7xl px-4 pt-16 sm:pt-32 md:px-8 2xl:px-0">
+			<h2 class={`text-center mb-8 sm:mb-16`}>How We Help You Thrive</h2>
 			{features.map((feature, index) => <WhyBlocks {feature} {index} />)}
 		</div>
 	</section>
@@ -107,13 +107,13 @@ const features = [
 	>
 		<div class="container mx-auto space-y-4">
 			<p class="font-semibold">We know how tough it can be running a small business.</p>
-			<p>
+			<p class="text-lg">
 				We used to own a technology consulting company. And like most small businesses, we worked
 				hard—and sometimes failed—at keeping track of the professional relationships and commitments
 				that drove our success. Trying to both code and nurture new business at the same time
 				stretched us too thin. Things tended to slip through the cracks.
 			</p>
-			<p>
+			<p class="text-lg">
 				We needed to streamline our work process, and find some solution that would help us get
 				organized and thrive. But when we looked for software that would work on our Mac operating
 				systems, we came up empty.
@@ -121,12 +121,12 @@ const features = [
 			<p class="font-semibold">
 				So like most software developers, we decided to build that tool ourselves!
 			</p>
-			<p>
+			<p class="text-lg">
 				As it turned out, many other small businesses needed just the same thing. During a trip to
 				MacWorld in 2002, an Apple employee encouraged us to sell our tool.
 			</p>
 			<p class="font-semibold">And that's how Daylite was born.</p>
-			<p>
+			<p class="text-lg">
 				Now, more than 20 years later, we remain more committed than ever to empower small
 				organizations to dream big—by helping you simply get better doing what you do.
 			</p>
@@ -151,7 +151,7 @@ const features = [
 		<div class="max-w-4xl space-y-4">
 			<p class="font-semibold">Are you running just to stay in place?</p>
 
-			<p>
+			<p class="text-lg">
 				You have a lot to look after when you manage a business. Daylite helps you get it all done
 				more efficiently, by simplifying what it takes to stay on top of clients, emails,
 				appointments, deals, projects and more.

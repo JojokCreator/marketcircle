@@ -9,7 +9,7 @@ const isEven = index % 2 === 0;
 <div
 	class="bg-background-light mx-auto grid max-w-5xl place-items-start items-center gap-2 overflow-clip rounded-xl sm:mb-8 md:grid-cols-2"
 >
-	<div class={`space-y-4 p-8 sm:p-12 ${isEven ? "md:order-2" : "md:order-1"}`}>
+	<div class={`space-y-4 p-4 sm:p-6 lg:p-12 ${isEven ? "md:order-2" : "md:order-1"}`}>
 		<h2 class="text-2xl font-semibold">{feature.title}</h2>
 		<div set:html={feature.text} />
 		{
@@ -19,13 +19,13 @@ const isEven = index % 2 === 0;
 						buttonText="Start Free Trial"
 						link="/signup/"
 						type="filled"
-						class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
+						class="my-6 py-5 sm:w-44 lg:my-0 lg:w-[40vw] lg:text-xl"
 					/>
 					<Button
 						buttonText="Talk With Us First"
 						link="/signup/"
 						type="dark"
-						class="my-6 w-[40vw] py-5 sm:w-52 sm:text-xl lg:my-0"
+						class="my-6 py-5 sm:w-44 lg:my-0 lg:w-[40vw] lg:text-xl"
 					/>
 				</div>
 			)

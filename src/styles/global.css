@@ -24,6 +24,8 @@
 
     --animate-click: button-pop 0.2s ease-out;
 
+    --breakpoint-8xl: 96rem;
+
     @keyframes button-pop {
         0% {
             transform: scale(0.97);
@@ -37,6 +39,10 @@
             transform: scale(1);
         }
     }
+}
+
+@utility break-right {
+    margin-right: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
 }
 
 @utility break-right {
@@ -62,12 +68,19 @@
     }
 
     h1 {
-        font-size: var(--text-4xl);
-        line-height: 3rem;
+        font-size: var(--text-3xl);
+        line-height: 2.5rem;
         font-weight: bold;
     }
 
-    @media (min-width: theme('screens.sm')) {
+    @media (min-width: theme('screens.md')) {
+        h1 {
+            font-size: var(--text-4xl);
+            line-height: 3rem;
+        }
+    }
+
+    @media (min-width: theme('screens.lg')) {
         h1 {
             font-size: var(--text-6xl);
             line-height: 4.5rem;
@@ -75,15 +88,26 @@
     }
 
     h2 {
-        font-size: var(--text-4xl);
-        line-height: 3rem;
+        font-size: var(--text-3xl);
+        line-height: 2.5rem;
         font-weight: bold;
     }
 
-    @media (min-width: theme('screens.sm')) {
+    @media (min-width: theme('screens.md')) {
+        h2 {
+            font-size: var(--text-4xl);
+            line-height: 3rem;
+        }
+    }
+
+    @media (min-width: theme('screens.lg')) {
         h2 {
             font-size: var(--text-6xl);
             line-height: 4.5rem;
         }
     }
+}
+
+@utility max-w-8xl {
+    max-width: var(--breakpoint-8xl);
 }

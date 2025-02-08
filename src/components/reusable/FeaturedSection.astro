@@ -15,7 +15,7 @@ const { isCol = false, title, text, image, imageSide = "left", cards, bg, color 
 ---
 
 <section
-	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24`}
+	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-24 sm:px-6 md:px-8 lg:py-0 2xl:px-0`}
 	id={title.toLowerCase()}
 >
 	<div class={`mx-auto max-w-5xl py-8 sm:py-24`}>
@@ -23,9 +23,7 @@ const { isCol = false, title, text, image, imageSide = "left", cards, bg, color 
 			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
 		>
 			<div
-				class={` ${isCol ? "md:max-w-4xl mx-auto px-4 xl:px-10 mb-10" : "md:w-2/3 px-4 xl:px-0"} h-full ${
-					imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12"
-				} flex flex-col justify-between gap-4 sm:gap-8`}
+				class={` ${isCol ? "md:max-w-4xl mx-auto px-4 2xl:px-10 mb-10" : "md:w-2/3 px-4 2xl:px-0"} h-full $${!isCol ? (imageSide === "right" ? "md:pl-0 md:pr-12" : "md:pl-12") : ""} flex flex-col justify-between gap-4 sm:gap-8`}
 			>
 				<div>
 					<h2 class={`${color}font-bold sm:text-6xl/18`}>{title}</h2>
