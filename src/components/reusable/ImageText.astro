@@ -27,7 +27,9 @@ const {
 
 <section class={`${bg} w-screen`}>
 	<div class={`${bg} mx-auto max-w-7xl ${first ? "pt-24 sm:pt-28" : "pt-8 sm:pt-16"}`}>
-		<div class={`md:flex items-center ${imageSide === "left" ? "flex-row-reverse" : ""}`}>
+		<div
+			class={`md:flex items-center md:items-end ${imageSide === "left" ? "flex-row-reverse" : ""}`}
+		>
 			<div
 				class={`md:w-2/3 h-full px-4 ${
 					imageSide === "right" ? "sm:ml-6 md:pl-8 md:pr-4" : "sm:mr-6 md:pr-8 md:pl-4"

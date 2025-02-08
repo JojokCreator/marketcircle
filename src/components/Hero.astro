@@ -1,0 +1,50 @@
+---
+import { Picture } from "astro:assets";
+import type { Props as ButtonProps } from "./reusable/Button.astro";
+import Button from "./reusable/Button.astro";
+
+interface Props {
+	title: string;
+	image: ImageMetadata;
+	button?: ButtonProps | false;
+	titleColor?: string;
+	bg?: string;
+}
+const { title, image, button, titleColor = "text-text-primary", bg = "bg-white" } = Astro.props;
+---
+
+<section class={`${bg} w-screen xl:min-h-[600px] overflow-clip`}>
+	<div class={`${bg} mx-auto max-w-7xl pt-24 sm:pt-28 xl:pt-20`}>
+		<div class={`xl:flex items-center xl:items-end`}>
+			<div
+				class={`sm:w-2/3 lg:w-[40%] xl:w-full 2xl:flex-shrink-0 xl:max-w-2xl self-center h-full px-4 sm:ml-6 xl:pl-8 xl:pr-4 flex flex-col sm:justify-start lg:justify-between lg:gap-8`}
+			>
+				<h1 class={`${titleColor} mb-4`}>{title}</h1>
+				<slot />
+				{
+					button && button.link && (
+						<Button
+							type={button.type}
+							link={button.link}
+							buttonText={button.buttonText}
+							class="w-72"
+						/>
+					)
+				}
+			</div>
+			<div
+				class={`break-right sm:w-3/4 lg:w-[80%x] xl:w-[90%] xl:self-start xl:max-h-[600px] xl:-translate-x-[20%] 2xl:flex-shrink-0 overflow-clip mx-auto -mt-8 sm:-mt-52 lg:-mt-96 xl:mt-2`}
+			>
+				<Picture
+					src={image}
+					alt={title}
+					sizes="(max-width: 640px) 100vw, (max-width: 640px) 80vw, 400w"
+					formats={["avif", "webp"]}
+					fallbackFormat="jpg"
+					widths={[400, 800, 1200, image.width]}
+					class="h-full w-full rounded-xl object-contain xl:object-cover xl:object-right"
+				/>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,5 +1,5 @@
 ---
-import ImageText from "../components/reusable/ImageText.astro";
+import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import hero from "../assets/home/hero.webp";
 import macbook from "../assets/home/relationshipsMacbook.webp";
@@ -33,12 +33,9 @@ import CTA from "../components/reusable/CTA.astro";
 ---
 
 <Layout>
-	<ImageText
-		first={true}
+	<Hero
 		title="Get Organized, Be Productive!"
-		imageSide="right"
 		image={hero}
-		breakOut="right"
 	>
 		<p>
 			Has running your business taken over? We get it! From juggling prospects to tracking sales to
@@ -51,7 +48,7 @@ import CTA from "../components/reusable/CTA.astro";
 			type="filled"
 			class="my-6 w-52 py-5 text-xl lg:my-0"
 		/>
-		<p class="text-text-secondary text-sm sm:text-base">
+		<p class="text-text-secondary mb-8 text-sm sm:text-base">
 			<Icon name="apple" class="mr-2 mb-1.5 inline" /> Only for Mac, iPhone, and iPad
 		</p>
 	</ImageText>
