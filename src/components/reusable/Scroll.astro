@@ -16,12 +16,12 @@ const { title, scroll } = Astro.props;
 >
 	<div class={`flex flex-col justify-center text-center items-center`}>
 		<div class={`px-4 2xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-8`}>
-			<h2 class="mb-4 text-3xl/12 font-bold sm:mb-8 sm:text-5xl/18">{title}</h2>
+			<h2 class="mb-4 sm:mb-8">{title}</h2>
 			<div class="mx-auto max-w-4xl">
 				<slot />
 			</div>
 			<div
-				class="mx-auto hidden w-full max-w-6xl flex-row justify-between py-8 sm:flex sm:flex-wrap xl:flex-nowrap sm:py-12"
+				class="mx-auto hidden w-full max-w-6xl flex-row justify-between py-8 sm:flex sm:flex-wrap sm:py-12 xl:flex-nowrap"
 			>
 				{
 					scroll.map((scroll, index) => (

@@ -33,10 +33,7 @@ import CTA from "../components/reusable/CTA.astro";
 ---
 
 <Layout>
-	<Hero
-		title="Get Organized, Be Productive!"
-		image={hero}
-	>
+	<Hero title="Get Organized, Be Productive!" image={hero}>
 		<p>
 			Has running your business taken over? We get it! From juggling prospects to tracking sales to
 			keeping client commitments, it gets overwhelming. <span class="font-bold">Enter Daylite!</span
@@ -48,10 +45,10 @@ import CTA from "../components/reusable/CTA.astro";
 			type="filled"
 			class="my-6 w-52 py-5 text-xl lg:my-0"
 		/>
-		<p class="text-text-secondary mb-8 text-sm sm:text-base">
+		<p class="text-text-secondary mb-8 text-sm sm:mb-0 sm:text-base">
 			<Icon name="apple" class="mr-2 mb-1.5 inline" /> Only for Mac, iPhone, and iPad
 		</p>
-	</ImageText>
+	</Hero>
 	<LogoBanner border={false} />
 	<CenterText
 		title="Daylite — Your All-In-One Solution for Business Success"
