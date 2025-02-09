@@ -82,6 +82,13 @@
 
     @media (min-width: theme('screens.lg')) {
         h1 {
+            font-size: var(--text-5xl);
+            line-height: 3.5rem;
+        }
+    }
+
+    @media (min-width: theme('screens.2xl')) {
+        h1 {
             font-size: var(--text-6xl);
             line-height: 4.5rem;
         }
@@ -101,6 +108,13 @@
     }
 
     @media (min-width: theme('screens.lg')) {
+        h2 {
+            font-size: var(--text-5xl);
+            line-height: 3.5rem;
+        }
+    }
+
+    @media (min-width: theme('screens.2xl')) {
         h2 {
             font-size: var(--text-6xl);
             line-height: 4.5rem;

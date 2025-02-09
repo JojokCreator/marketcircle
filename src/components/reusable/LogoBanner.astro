@@ -12,17 +12,19 @@ const { border = true } = Astro.props;
 	class={`bg-background-light w-screen ${border ? "border-b border-background-light-hover" : ""} px-4 2xl:px-0`}
 >
 	<div
-		class={`mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 py-6 sm:p-6 sm:flex-row sm:gap-16 ${border ? "sm:p-0 sm:py-16" : "sm:p-0 sm:py-8"}`}
+		class={`mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 py-6 sm:p-6 lg:flex-row lg:gap-16 ${border ? "sm:p-0 sm:py-16" : "sm:p-0 sm:py-8"}`}
 	>
 		<p class="text-text-secondary text-sm sm:text-base">
 			Featured on top Apple & business news sources:
 		</p>
-		<div class="flex grow flex-wrap items-center justify-center gap-4 sm:justify-between">
+		<ul
+			class="mx-auto flex max-w-7xl grow flex-col flex-wrap items-center justify-center gap-4 sm:flex-row lg:justify-start lg:gap-8 xl:justify-between"
+		>
 			{
 				Object.keys(imageModules).map(async (image) => {
 					const imageSrc = await imageModules[image]();
 					return (
-						<div class="h-5 w-auto sm:h-7">
+						<li class="h-5 w-auto xl:h-6">
 							<Picture
 								sizes="300px"
 								widths={[200, 400, 800]}
@@ -32,10 +34,10 @@ const { border = true } = Astro.props;
 								src={imageSrc.default}
 								alt={image}
 							/>
-						</div>
+						</li>
 					);
 				})
 			}
-		</div>
+		</ul>
 	</div>
 </div>
