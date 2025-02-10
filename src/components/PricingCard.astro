@@ -5,7 +5,7 @@ import Button from "./reusable/Button.astro";
 const { plan, priceMonth, priceYear, features, pill } = Astro.props;
 ---
 
-<div class="border-background-light-hover w-[300px] overflow-hidden rounded-lg border">
+<div class="border-background-light-hover w-full overflow-hidden rounded-lg border 2xl:w-[300px]">
 	<div class="flex items-center justify-between p-6">
 		<h2 class="text-2xl">{plan}</h2>
 		{
