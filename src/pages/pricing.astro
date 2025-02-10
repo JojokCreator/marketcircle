@@ -102,7 +102,9 @@ const updatedPlans = accumulateFeatures(daylitePlans);
 		<h2 class="mx-auto max-w-4xl px-4 text-center 2xl:px-0">
 			Choose the Right Plan for Your Business
 		</h2>
-		<div class="mt-12 mb-4 flex w-full justify-center gap-2 sm:mt-16 sm:justify-end">
+		<div
+			class="mt-12 mb-4 flex w-full justify-center gap-2 px-4 sm:mt-16 sm:justify-end sm:px-6 md:px-8 2xl:px-0"
+		>
 			<button
 				class="aria-selected:text-accent-blue hover:bg-background-light rounded-lg p-1 transition-colors duration-200 ease-in hover:cursor-pointer aria-selected:pointer-events-none aria-selected:font-semibold"
 				id="toggleMonth"
@@ -123,7 +125,7 @@ const updatedPlans = accumulateFeatures(daylitePlans);
 			</div>
 		</div>
 		<div
-			class="mx-auto grid max-w-7xl grid-cols-1 place-items-center gap-6 sm:grid-cols-2 sm:place-items-start sm:gap-8 lg:grid-cols-4 lg:gap-16"
+			class="mx-auto grid max-w-7xl grid-cols-1 place-items-center gap-6 px-4 sm:grid-cols-2 sm:place-items-start sm:gap-4 sm:px-6 md:px-8 lg:grid-cols-4 lg:gap-16 2xl:gap-8"
 		>
 			{
 				daylitePlans.map((plan) => (
