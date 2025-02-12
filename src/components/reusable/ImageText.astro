@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
 	title: string;
-	header: string | { icon: string };
+	header?: string | { icon: string } | undefined;
 	image: ImageMetadata;
 	imageSide?: "left" | "right";
 	button?: ButtonProps | false;
@@ -47,7 +47,7 @@ const {
 								{header}
 							</p>
 						) : (
-							<Icon name={header.icon} size="72" />
+							header && <Icon name={header.icon} size="72" />
 						)
 					}
 					{
