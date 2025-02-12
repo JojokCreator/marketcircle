@@ -124,8 +124,8 @@
 
     @media (min-width: theme('screens.2xl')) {
         h2 {
-            font-size: var(--text-6xl);
-            line-height: 4.5rem;
+            font-size: 3.375rem;
+            line-height: 4rem;
         }
     }
 }
