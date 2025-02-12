@@ -12,8 +12,8 @@ import { Picture } from "astro:assets";
 				alt={"flower"}
 				sizes="(max-width: 640px) 100vw, 400w"
 				formats={["avif", "webp"]}
-				fallbackFormat="jpg"
-				widths={[400, 800, 1200]}
+				fallbackFormat="png"
+				widths={[400, 800, 1200, image.width]}
 				class="h-full w-full rounded-lg object-cover"
 			/>
 		</div>

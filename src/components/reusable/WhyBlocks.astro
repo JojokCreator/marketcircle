@@ -39,8 +39,8 @@ const isEven = index % 2 === 0;
 			alt={feature.title}
 			sizes="(max-width: 640px) 100vw, 600w"
 			formats={["avif", "webp"]}
-			fallbackFormat="jpg"
-			widths={[400, 800, 1200]}
+			fallbackFormat="png"
+			widths={[400, 800, 1200, image.width]}
 			class={`${isEven ? "sm:rounded-l-lg" : "sm:rounded-l-lg"} rounded-lg h-full w-full object-cover`}
 		/>
 	</div>
