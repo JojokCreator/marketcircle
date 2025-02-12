@@ -47,10 +47,18 @@
 
 @utility break-right {
     margin-right: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
+
+    @media (min-width: theme('screens.2xl')) {
+        margin-left: 0
+    }
 }
 
 @utility break-left {
     margin-left: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
+
+    @media (min-width: theme('screens.2xl')) {
+        margin-left: 0
+    }
 }
 
 @custom-variant dialog-open (&[open]);

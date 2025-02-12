@@ -36,8 +36,8 @@ const { isCol = false, title, text, image, imageSide = "left", cards, bg, color 
 					alt={title}
 					sizes="(max-width: 640px) 100vw, 800w"
 					formats={["avif", "webp"]}
-					fallbackFormat="jpg"
-					widths={[400, 800, 1200]}
+					fallbackFormat="png"
+					widths={[400, 800, 1200, image.width]}
 					class="h-full w-full rounded-lg object-cover"
 				/>
 			</div>
@@ -54,8 +54,8 @@ const { isCol = false, title, text, image, imageSide = "left", cards, bg, color 
 								alt={card.title}
 								sizes="100px"
 								formats={["avif", "webp"]}
-								fallbackFormat="jpg"
-								widths={[400, 800, 1200]}
+								fallbackFormat="png"
+								widths={[400, 800, 1200, image.width]}
 								class="h-full w-full rounded-lg object-contain"
 							/>
 						</div>

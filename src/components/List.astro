@@ -70,8 +70,8 @@ const {
 							alt={title}
 							sizes="(max-width: 640px) 100vw, 800w"
 							formats={["avif", "webp"]}
-							fallbackFormat="jpg"
-							widths={[400, 800, 1200]}
+							fallbackFormat="png"
+							widths={[400, 800, 1200, image.width]}
 							class="hidden h-full w-full rounded-lg object-cover sm:block"
 						/>
 						<ul class="static top-0 left-0 flex h-full flex-col justify-center gap-2 px-2 sm:absolute sm:w-1/2 sm:px-6 lg:w-3/4 lg:px-10 lg:pr-16">
@@ -87,8 +87,8 @@ const {
 							alt={title}
 							sizes="(max-width: 640px) 100vw, 800w"
 							formats={["avif", "webp"]}
-							fallbackFormat="jpg"
-							widths={[400, 800, 1200]}
+							fallbackFormat="png"
+							widths={[400, 800, 1200, image.width]}
 							class="h-full w-full rounded-lg object-cover py-4 sm:hidden"
 						/>
 					</div>
