@@ -43,7 +43,7 @@ const {
 			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
 		>
 			<div
-				class={`h-full flex flex-col justify-between gap-4 sm:gap-8 px-4 sm:px-6 md:px-8 2xl:px-0 ${breakOut ? "md:flex-shrink-0 md:max-w-[min(50vw,450px)]" : "md:w-1/2"}`}
+				class={`h-full flex flex-col justify-between gap-4 sm:gap-8 px-4 sm:px-6 md:px-8 2xl:px-0 ${breakOut ? "md:flex-shrink-0 md:max-w-[min(50vw,450px)] md:pt-10" : "max-w-[51rem] mx-auto py-8 md:py-12"}`}
 			>
 				<div>
 					{
@@ -65,7 +65,7 @@ const {
 			{
 				image && (
 					<div
-						class={`${breakOut === "right" ? "break-right min-w-3/4" : breakOut === "left" ? "break-left min-w-3/4" : "mx-auto"} mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-5xl" : ""} `}
+						class={`${breakOut === "right" ? "break-right min-w-3/4" : breakOut === "left" ? "break-left min-w-3/4" : "mx-auto min-w-3/5"} mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-5xl" : ""} h-auto`}
 					>
 						<Picture
 							src={image}

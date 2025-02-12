@@ -2,9 +2,11 @@
 import { Picture } from "astro:assets";
 import type { Props as ButtonProps } from "./Button.astro";
 import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
 	title: string;
+	header: string | { icon: string };
 	image: ImageMetadata;
 	imageSide?: "left" | "right";
 	button?: ButtonProps | false;
@@ -16,6 +18,7 @@ interface Props {
 const {
 	title,
 	image,
+	header,
 	imageSide = "left",
 	button,
 	first = false,
@@ -35,13 +38,27 @@ const {
 					imageSide === "right" ? "sm:ml-6 md:pl-8 md:pr-4" : "sm:mr-6 md:pr-8 md:pl-4"
 				} flex flex-col justify-between gap-4 sm:gap-8`}
 			>
-				{
-					first ? (
-						<h1 class={`${titleColor}`}>{title}</h1>
-					) : (
-						<h2 class={`${titleColor}`}>{title}</h2>
-					)
-				}
+				<div>
+					{
+						typeof header === "string" ? (
+							<p
+								class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-secondary"} mb-4 w-fit border-b border-b-gray-400 text-lg font-semibold tracking-wide uppercase sm:text-xl/10`}
+							>
+								{header}
+							</p>
+						) : (
+							<Icon name={header.icon} size="72" />
+						)
+					}
+					{
+						first ? (
+							<h1 class={`${titleColor}`}>{title}</h1>
+						) : (
+							<h2 class={`${titleColor}`}>{title}</h2>
+						)
+					}
+				</div>
+
 				<slot />
 				{
 					button && button.link && (
