@@ -143,7 +143,7 @@ const menu: { [key: string]: MenuItem }[] = [
 				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 py-4 md:flex-row md:justify-center md:py-0"
 			>
 				{
-					menu.map((item, index) => {
+					menu.map((item) => {
 						const key = Object.keys(item)[0];
 						const value = item[key];
 						return (

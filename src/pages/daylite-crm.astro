@@ -22,6 +22,7 @@ import Blob from "../components/reusable/Blob.astro";
 <Layout>
 	<ImageText
 		first={true}
+		header="Daylite CRM"
 		title="Stay On Top of All Your Client Interactions"
 		titleColor="text-accent-blue"
 		imageSide="right"
@@ -33,13 +34,9 @@ import Blob from "../components/reusable/Blob.astro";
 		</p>
 		<Button
 			buttonText="Start Free Trial"
-			,
 			link="/signup/"
-			,
 			type="filled"
-			,
 			class="my-6 w-52 py-5 text-xl lg:my-0"
-			,
 		/>
 		<p class="text-sm sm:text-base">
 			<Icon name="apple" class="mr-2 mb-1 inline" /> Only for Mac, iPhone, and iPad
@@ -73,7 +70,7 @@ import Blob from "../components/reusable/Blob.astro";
 	</Blob>
 	<Section
 		isCol={true}
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-white"
 		title="Remember Every Detail"
 		header={{ icon: "bulb" }}
@@ -82,7 +79,7 @@ import Blob from "../components/reusable/Blob.astro";
 		imageSide="right"
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-light"
 		title="Impress Your Clients"
 		header={{ icon: "wand" }}
@@ -92,7 +89,7 @@ import Blob from "../components/reusable/Blob.astro";
 		imageSide="right"
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-dark"
 		title="Smartly Segment Clients"
 		header={{ icon: "avatars" }}
@@ -101,13 +98,14 @@ import Blob from "../components/reusable/Blob.astro";
 		imageSide="right"
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-light"
 		title="Manage Email with Ease"
 		header={{ icon: "email" }}
 		text="Daylite integrates seamlessly with your inbox, whether you’re on your Mac or your iPhone or iPad. Save email conversations, add new contacts, schedule meetings, and create follow-up reminders, all from your email. Plus, you can share email communication with your team so everyone is in the loop."
 		image={business}
 		imageSide="left"
+		breakOut="left"
 		cards={[
 			{
 				icon: "clock",
@@ -127,7 +125,7 @@ import Blob from "../components/reusable/Blob.astro";
 		]}
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-white"
 		title="Send Personalized Emails"
 		header={{ icon: "pen" }}
@@ -136,17 +134,18 @@ import Blob from "../components/reusable/Blob.astro";
 		imageSide="right"
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-light"
 		title="Streamline Your Workflow"
 		header={{ icon: "streamline" }}
 		text="As you and your team close more deals and grow your business, it can become a challenge to juggle the onboarding process for multiple clients at once. Daylite solves this problem by allowing you to create checklists of to-dos or follow-ups that can be added to a client with a single click."
 		image={streamline}
 		imageSide="left"
+		breakOut="left"
 	/>
 	<Section
 		isCol={true}
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-dark"
 		title="Organize Client Data With Forms"
 		header={{ icon: "clipboard" }}
@@ -155,7 +154,7 @@ import Blob from "../components/reusable/Blob.astro";
 		imageSide="right"
 	/>
 	<Section
-		color="text-accent-blue"
+		color="bg-gradient-to-tl from-accent-blue/80 to-accent-blue"
 		bg="bg-background-light"
 		title="Control Access & Permissions"
 		header={{ icon: "lock" }}
