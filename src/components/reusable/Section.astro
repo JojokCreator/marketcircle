@@ -38,7 +38,7 @@ const {
 	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-20 `}
 	id={id ? id : title.toLowerCase()}
 >
-	<div class={`max-w-7xl mx-auto py-8 sm:py-24`}>
+	<div class={`max-w-7xl mx-auto py-8 sm:py-24 overflow-clip xl:overflow-visible`}>
 		<div
 			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
 		>
