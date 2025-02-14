@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Roboto', sans-serif;
+    /* --font-sans: 'Roboto', sans-serif; */
+    --font-sans: '-apple-system', 'Roboto', sans-serif;
 
     --color-background: #FFFFFF;
     --color-background-light: #F7F7F7;
@@ -24,7 +25,10 @@
 
     --animate-click: button-pop 0.2s ease-out;
 
+    --breakpoint-md: 53.75rem;
+    --breakpoint-7xl: 1080px;
     --breakpoint-8xl: 96rem;
+
 
     @keyframes button-pop {
         0% {
@@ -42,19 +46,20 @@
 }
 
 @utility break-right {
-    margin-right: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
-}
+    margin-right: -50vw;
 
-@utility break-right {
-    margin-right: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
-
-    @media (min-width: theme('screens.2xl')) {
-        margin-left: 0
+    @media (min-width: theme('screens.sm')) {
+        margin-right: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
     }
 }
 
 @utility break-left {
-    margin-left: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
+    margin-left: -50vw;
+
+    @media (min-width: theme('screens.sm')) {
+
+        margin-left: calc(-1 * ((max(80rem, 100vw) / 2) - (80rem / 2)));
+    }
 
     @media (min-width: theme('screens.2xl')) {
         margin-left: 0
@@ -66,18 +71,12 @@
 @layer base {
     p {
         font-size: var(--text-lg);
-    }
-
-    @media (min-width: theme('screens.sm')) {
-        p {
-            font-size: var(--text-xl);
-            line-height: 2rem;
-        }
+        line-height: 2rem;
     }
 
     h1 {
-        font-size: var(--text-4xl);
-        line-height: 3rem;
+        font-size: 2.25rem;
+        line-height: 2.75rem;
         font-weight: bold;
     }
 
@@ -88,23 +87,16 @@
         }
     }
 
-    @media (min-width: theme('screens.2xl')) {
-        h1 {
-            font-size: 3.375rem;
-            line-height: 4rem;
-        }
-    }
-
     h2 {
-        font-size: var(--text-3xl);
-        line-height: 2.5rem;
+        font-size: 2.25rem;
+        line-height: 2.75rem;
         font-weight: bold;
     }
 
-    @media (min-width: theme('screens.md')) {
+    @media (min-width: theme('screens.lg')) {
         h2 {
-            font-size: var(--text-4xl);
-            line-height: 3rem;
+            font-size: 3.375rem;
+            line-height: 4rem;
         }
     }
 

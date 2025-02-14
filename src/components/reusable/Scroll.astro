@@ -11,22 +11,20 @@ const { title, scroll } = Astro.props;
 ---
 
 <section
-	class={`mx-auto max-w-7xl mt-20 mb-14 sm:mb-0 sm:mt-32 px-4 sm:px-6 md:px-8 lg:py-0 2xl:px-0`}
+	class={`mx-auto sm:max-w-3xl lg:max-w-7xl mt-20 md:mt-32 px-4 sm:px-6 md:px-8 lg:py-0 2xl:px-0`}
 >
 	<div class={`flex flex-col justify-center text-center items-center`}>
-		<div class={`px-4 2xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-8`}>
-			<h2 class="mb-4 sm:mb-8">{title}</h2>
+		<div class={`px-4 2xl:px-0 h-full flex flex-col justify-between gap-4 md:gap-8`}>
+			<h2 class="mx-auto mb-4 max-w-4xl md:mb-8">{title}</h2>
 			<div class="mx-auto max-w-4xl">
 				<slot />
 			</div>
-			<div
-				class="mx-auto hidden w-full max-w-6xl flex-row justify-between py-8 sm:flex sm:flex-wrap sm:py-12 xl:flex-nowrap"
-			>
+			<div class="mx-auto hidden w-full max-w-4xl flex-row justify-between py-8 md:flex md:py-12">
 				{
 					scroll.map((scroll, index) => (
 						<a
 							href={"#" + scroll}
-							class={`group flex h-52 w-[40vw] flex-col items-center justify-center gap-2 text-xl hover:cursor-pointer sm:text-2xl/10 md:w-[20vw] ${index === 0 ? "text-accent-blue" : index === 1 ? "text-accent-teal" : index === 2 ? "text-accent-red" : "text-accent-purple"}`}
+							class={`group flex h-52 w-full flex-col items-center justify-center gap-2 text-xl hover:cursor-pointer md:text-2xl/10 ${index === 0 ? "text-accent-blue" : index === 1 ? "text-accent-teal" : index === 2 ? "text-accent-red" : "text-accent-purple"}`}
 						>
 							<Icon name={scroll} size="52" />
 							<p class="font-bold capitalize">{scroll}</p>

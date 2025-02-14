@@ -3,21 +3,20 @@ const { author, position, quote } = Astro.props;
 ---
 
 <div
-	class="border-text-secondary/20 mx-2 border-y px-4 sm:mx-0 sm:border-0 sm:px-6 md:px-8 lg:py-0 2xl:px-0"
+	class="border-text-secondary/20 mx-2 border-y px-4 md:mx-0 md:border-0 md:px-8 lg:py-0 2xl:px-0"
 >
 	<figure
-		class="border-l-orange border-text-secondary/20 relative mx-auto my-6 max-w-3xl border-y-0 border-l-4 pt-4 sm:my-8 sm:border-y sm:border-l-0 sm:py-6 sm:pt-10"
+		class="border-l-orange border-text-secondary/20 relative mx-auto my-6 max-w-3xl border-y-0 border-l-4 md:my-8 md:border-y md:border-l-0 md:py-6 md:pt-4 md:pt-10"
 	>
-		<span class="absolute top-8 left-0 hidden font-serif text-9xl text-gray-200 sm:block">“</span>
-		<blockquote class="relative z-10 p-4 text-center leading-relaxed sm:px-20 sm:text-lg">
+		<span class="absolute top-8 left-0 hidden font-serif text-9xl text-gray-200 md:block">“</span>
+		<blockquote class="relative z-10 px-4 leading-relaxed md:p-4 md:px-20 md:text-center">
 			{quote}
 		</blockquote>
-		<span class="absolute right-0 -bottom-8 hidden font-serif text-9xl text-gray-200 sm:block"
+		<span class="absolute right-0 -bottom-8 hidden font-serif text-9xl text-gray-200 md:block"
 			>”</span
 		>
-		<figcaption class="mt-10 text-center">
-			<div class="text-text-primary font-semibold">{author}</div>
-			<div class="text-text-secondary mt-1">{position}</div>
+		<figcaption class="mt-10 px-4 md:px-0 md:text-center">
+			<div class="text-text-primary font-semibold">{author} {position}</div>
 		</figcaption>
 	</figure>
 </div>
