@@ -166,7 +166,7 @@ const menu: { [key: string]: MenuItem }[] = [
 											{value.values && (
 												<Icon
 													name="chevronDown"
-													class="md:float-auto float-right inline transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180"
+													class="float-right inline h-4 w-auto transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180 md:float-none"
 												/>
 											)}
 											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full md:block" />
@@ -235,7 +235,7 @@ const menu: { [key: string]: MenuItem }[] = [
 						buttonText="Start Free Trial"
 						link="/signup/"
 						type="filled"
-						class="my-6 w-52 py-4 md:my-0 md:py-2"
+						class="my-6 w-52 py-4 sm:w-fit md:my-0 md:py-2"
 					/>
 				</li>
 				<li class="md:hidden">
