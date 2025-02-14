@@ -10,7 +10,7 @@ interface Props {
 const { title, text, header, cards } = Astro.props;
 ---
 
-<section class={`mx-auto max-w-7xl my-8 sm:my-32 px-4 sm:px-0`}>
+<section class={`mx-auto max-w-7xl my-8 sm:mt-32 sm:mb-16 px-4 sm:px-0`}>
 	<div class={`flex flex-col justify-center text-center items-center`}>
 		<div
 			class={`sm:px-6 md:px-8 lg:py-0 2xl:px-0 h-full flex flex-col justify-between gap-4 sm:gap-8 mx-auto max-w-4xl`}
@@ -31,7 +31,7 @@ const { title, text, header, cards } = Astro.props;
 					cards.map((card, index) => (
 						<a
 							href={card.link}
-							class={`group hover:bg-background-light flex flex-col items-center justify-center space-y-2 rounded-xl py-4 text-base sm:text-lg/8 ${
+							class={`group flex max-w-25 flex-col items-center justify-center space-y-2 rounded-xl py-4 md:max-w-none md:px-4 ${
 								index < 3
 									? "text-accent-teal"
 									: index < 6
@@ -40,7 +40,7 @@ const { title, text, header, cards } = Astro.props;
 							}`}
 						>
 							<Icon name={card.title.split(" ")[0].toLowerCase()} class="h-12 w-auto sm:h-16" />
-							<p class="flex text-lg font-medium sm:text-xl sm:whitespace-nowrap">
+							<p class="flex text-base/tight tracking-tight underline md:text-xl md:whitespace-nowrap md:no-underline">
 								{card.title}{" "}
 								<span class="ml-2 hidden transition-transform duration-200 ease-in-out group-hover:translate-x-1 sm:block">
 									{">"}

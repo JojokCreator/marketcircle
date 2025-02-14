@@ -88,10 +88,10 @@ const menu: { [key: string]: MenuItem }[] = [
 	class="fixed top-0 left-0 z-[60] w-screen bg-white/90 backdrop-blur-xl transition-shadow duration-300 ease-in-out"
 >
 	<nav
-		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between px-4 py-2 text-lg text-gray-700 sm:px-6 md:px-8 md:py-0 2xl:px-0"
+		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between px-4 py-2 text-gray-700 sm:px-6 md:px-8 md:py-0 2xl:px-0"
 	>
 		<a href="/" aria-label="Home Page" class="md:pr-full flex">
-			<Icon name="logo" class="h-7 w-auto lg:h-8" />
+			<Icon name="logo" class="h-7 w-auto md:mr-8 md:h-8" />
 		</a>
 		<div class="md:hidden">
 			<div
@@ -140,7 +140,7 @@ const menu: { [key: string]: MenuItem }[] = [
 			id="menu"
 		>
 			<ul
-				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 py-4 md:flex-row md:justify-center md:py-0"
+				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 pt-4 pb-3 md:flex-row md:justify-center md:py-0"
 			>
 				{
 					menu.map((item) => {
@@ -148,25 +148,25 @@ const menu: { [key: string]: MenuItem }[] = [
 						const value = item[key];
 						return (
 							<li
-								class="menu group border-background-light-hover w-full cursor-pointer border-b bg-white py-2 md:w-auto md:border-transparent md:bg-transparent"
+								class="menu group border-background-light-hover w-full cursor-pointer border-b bg-white pt-2 md:w-auto md:border-transparent md:bg-transparent md:py-2"
 								aria-haspopup={!!value.values}
 							>
 								<div class="flex items-center justify-start space-x-2 px-2 md:justify-between 2xl:px-4">
 									{value.link ? (
 										<a
 											href={value.link}
-											class="item my-2 py-2 text-lg font-semibold whitespace-nowrap md:pb-0 md:font-medium"
+											class="item pb-2 font-semibold whitespace-nowrap md:my-2 md:py-2 md:pb-0 md:font-medium"
 										>
 											{key}
 											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full md:block" />
 										</a>
 									) : (
-										<span class="item my-2 w-full py-2 text-lg font-semibold whitespace-nowrap md:pb-0 md:font-medium">
+										<span class="item w-full font-semibold whitespace-nowrap md:my-2 md:py-2 md:pb-0 md:font-medium">
 											{key}
 											{value.values && (
 												<Icon
 													name="chevronDown"
-													class="float-right inline h-4 w-auto transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180 md:float-none"
+													class="float-right inline h-4 w-auto translate-y-1.5 transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180 md:float-none md:-translate-y-0.5"
 												/>
 											)}
 											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full md:block" />
@@ -174,20 +174,20 @@ const menu: { [key: string]: MenuItem }[] = [
 									)}
 								</div>
 								{value.values && (
-									<ul class="dropdown text-text-secondary divide-background-light-hover top-14 z-50 mx-auto h-fit max-h-0 w-full min-w-52 flex-col overflow-hidden bg-white py-1 transition-all duration-500 ease-in-out group-aria-expanded:max-h-[999px] md:absolute md:top-11 md:left-1/2 md:my-8 md:hidden md:max-h-fit md:w-fit md:-translate-x-1/2 md:flex-row md:divide-x md:overflow-visible md:bg-white md:py-4 md:shadow-xl md:group-hover:flex">
+									<ul class="dropdown divide-background-light-hover top-14 z-50 mx-auto h-fit max-h-0 w-full min-w-52 flex-col overflow-hidden rounded-xl bg-white py-1 transition-all duration-500 ease-in-out group-aria-expanded:max-h-[999px] md:absolute md:top-7 md:left-1/2 md:my-8 md:hidden md:max-h-fit md:w-fit md:-translate-x-1/2 md:flex-row md:divide-x md:overflow-visible md:bg-white md:py-4 md:shadow-xl md:group-hover:flex">
 										{value.values.map((subItem, subIndex) => (
 											<li class="md:py-2">
 												{"text" in subItem ? (
 													<a
 														href={subItem.link}
-														class="hover:bg-background-light-hover my-0.5 block px-2 py-1 text-lg font-normal whitespace-nowrap"
+														class="hover:bg-background-light-hover/80 my-0.5 block px-2 py-1 font-normal whitespace-nowrap"
 													>
 														{subItem.text}
 													</a>
 												) : (
-													<div class="my-0.5 block px-4 pb-4 text-lg font-normal whitespace-nowrap">
+													<div class="my-0.5 block px-4 py-4 font-normal whitespace-nowrap">
 														<span
-															class={`${subIndex === 0 ? "text-orange" : subIndex === 1 ? "text-accent-blue" : "text-accent-purple"} ml-0.5 text-base font-semibold tracking-wide uppercase md:text-lg`}
+															class={`${subIndex === 0 ? "text-orange" : subIndex === 1 ? "text-accent-blue" : "text-accent-purple"} ml-0.5 text-base font-semibold tracking-wide uppercase`}
 														>
 															<Icon
 																name={subItem.title.toLowerCase().split(" ").join("-") + "-icon"}
@@ -195,12 +195,12 @@ const menu: { [key: string]: MenuItem }[] = [
 															/>
 															{subItem.title}
 														</span>
-														<ul class="z-50">
+														<ul class="z-50 md:space-y-2">
 															{subItem.values.map((nestedItem) => (
-																<li>
+																<li class="md:first:mt-4">
 																	<a
 																		href={nestedItem.link}
-																		class="hover:bg-background-light-hover my-0.5 block rounded-xl px-6 py-2 pl-7 text-base font-normal whitespace-nowrap"
+																		class="hover:bg-background-light-hover/80 my-0.5 block rounded-xl px-6 py-3 pl-7 text-base font-normal whitespace-nowrap"
 																	>
 																		{nestedItem.text}
 																		<Icon name="chevronDown" class="mb-0.5 inline -rotate-90" />
@@ -225,7 +225,7 @@ const menu: { [key: string]: MenuItem }[] = [
 				<li class="border-background-light-hover w-full border-b md:border-transparent">
 					<a
 						href="/account"
-						class="md:text-text-secondary md:hover:bg-background-light-hover my-2 block px-5 pt-2 pb-4 text-start text-lg font-semibold whitespace-nowrap md:my-0.5 md:rounded-lg md:px-3 md:py-1 md:text-center md:font-normal"
+						class="md:text-text-secondary md:hover:bg-background-light-hover/80 block px-4 pb-3 text-start font-semibold whitespace-nowrap md:my-1.5 md:rounded-lg md:px-3 md:py-2 md:text-center md:font-normal"
 					>
 						My Account
 					</a>
@@ -235,7 +235,7 @@ const menu: { [key: string]: MenuItem }[] = [
 						buttonText="Start Free Trial"
 						link="/signup/"
 						type="filled"
-						class="my-6 w-52 py-4 sm:w-fit md:my-0 md:py-2"
+						class="my-6 w-52 py-4 md:my-0 md:w-fit md:py-2"
 					/>
 				</li>
 				<li class="md:hidden">

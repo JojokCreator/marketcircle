@@ -12,19 +12,19 @@ const { border = true } = Astro.props;
 	class={`bg-background-light w-screen ${border ? "border-b border-background-light-hover" : ""} px-4 2xl:px-0`}
 >
 	<div
-		class={`mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 py-6 sm:p-6 lg:flex-row lg:gap-16 ${border ? "sm:p-0 sm:py-16" : "sm:p-0 sm:py-8"}`}
+		class={`mx-auto flex h-full max-w-7xl flex-col gap-4 items-center justify-between py-6 lg:p-6 md:flex-row ${border ? "sm:p-0 sm:py-16" : "sm:p-0 sm:py-8"}`}
 	>
 		<p class="text-text-secondary mt-4 text-sm sm:mt-0 sm:text-base">
 			Featured on top Apple & business news sources:
 		</p>
 		<ul
-			class="mx-auto my-4 flex max-w-7xl grow flex-wrap items-center justify-center gap-4 sm:my-0 sm:flex-row lg:justify-start lg:gap-8 xl:justify-between"
+			class="mx-auto my-4 flex grow flex-wrap items-center justify-center gap-4 sm:my-0 sm:flex-row md:justify-evenly md:gap-0"
 		>
 			{
 				Object.keys(imageModules).map(async (image) => {
 					const imageSrc = await imageModules[image]();
 					return (
-						<li class="h-5 flex-shrink-0 flex-grow-0 basis-auto xl:h-6">
+						<li class="h-4 flex-shrink-0 flex-grow-0 basis-auto sm:h-5 md:h-4 lg:h-6.5">
 							<Picture
 								sizes="100px"
 								widths={[300, 600]}
