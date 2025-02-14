@@ -12,7 +12,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 		class="mx-auto flex h-full max-w-7xl flex-col-reverse items-center justify-evenly gap-4 sm:p-4 md:flex-row md:items-start md:gap-16 md:p-0 md:py-8"
 	>
 		<div
-			class="grid grid-cols-2 items-center justify-center gap-4 gap-y-4 sm:w-1/2 md:justify-between md:gap-8 md:gap-y-8 lg:grid-cols-3"
+			class="grid grid-cols-2 items-center justify-center gap-4 gap-y-4 sm:w-3/4 sm:grid-cols-3 md:justify-between md:gap-8 md:gap-y-8"
 		>
 			{
 				Object.keys(imageModules).map(async (image) => {
@@ -22,7 +22,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 							<Picture
 								sizes="300px"
 								widths={[200, 400, 800]}
-								class="h-full w-full max-w-36 object-contain"
+								class="mx-auto h-full w-full max-w-28 object-contain sm:min-w-24"
 								formats={["avif", "webp"]}
 								fallbackFormat="jpeg"
 								src={imageSrc.default}
@@ -37,7 +37,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 			}
 		</div>
 		<div
-			class="flex h-full flex-col justify-start gap-4 text-center sm:w-1/2 md:gap-8 md:text-start lg:w-1/3"
+			class="mx-auto flex h-full max-w-3xl flex-col justify-start gap-4 text-center sm:w-1/2 md:gap-8 md:text-start"
 		>
 			<div>
 				<p
@@ -56,7 +56,7 @@ const imageModules = import.meta.glob<{ default: ImageMetadata }>(
 				buttonText="Talk to an Advisor"
 				link="https://marketcircle.as.me/15-minute-daylite-demo/"
 				type="filledBlue"
-				class="mx-auto my-6 w-52 py-5 text-xl md:mx-0 lg:my-0"
+				class="mx-auto w-52 py-5 md:mx-0"
 			/>
 		</div>
 	</div>

@@ -96,9 +96,9 @@ const {
 		{
 			quote && (
 				<figure class="md:border-text-secondary/20 relative mx-auto max-w-3xl border-y border-transparent px-4 pt-0 sm:px-6 sm:pt-10 md:px-8 md:py-6 2xl:px-0">
-					<figcaption class="border-l-accent-blue space-y-4 border-l-3 md:text-center md:mt-6 md:border-0 flex flex-col-reverse md:block">
-						<div class="flex items-center justify-start mb-0 md:mb-6">
-							<div class="mx-4 aspect-square h-12 md:h-20 grow-0 md:mx-auto md:w-auto">
+					<figcaption class="border-l-accent-blue flex flex-col-reverse space-y-4 border-l-3 md:mt-6 md:block md:border-0 md:text-center">
+						<div class="mb-0 flex items-center justify-start md:mb-6">
+							<div class="mx-4 aspect-square h-12 grow-0 md:mx-auto md:h-20 md:w-auto">
 								<Picture
 									src={quote.image}
 									alt={quote.author}
@@ -112,10 +112,11 @@ const {
 							<div
 								class={`${bg === "bg-background-dark" ? "text-text-dark-mute" : "text-text-primary"} w-1/2 font-semibold md:hidden`}
 							>
-								{quote.author}</br> {quote.position}
+								{quote.author}
+								<br /> {quote.position}
 							</div>
 						</div>
-						<blockquote class="relative z-10 px-4 leading-relaxed md:px-20 text-start md:text-center md:text-lg">
+						<blockquote class="relative z-10 px-4 text-start leading-relaxed md:px-20 md:text-center md:text-lg">
 							{quote.quote}
 						</blockquote>
 						<div

@@ -19,17 +19,21 @@ const cards = [
 interface Props {
 	cardsTitle?: string;
 	padding?: boolean;
+	contained?: boolean;
 }
 const {
 	cardsTitle = "You’ve built your business this far. Take it to the next level.",
 	padding = false,
+	contained = false,
 } = Astro.props;
 ---
 
-<div class={`${padding ? "my-8 sm:my-24" : ""} text-center `}>
-	<h2 class="mt-4 text-2xl/10 font-bold sm:mt-8 sm:text-3xl/16">{cardsTitle}</h2>
+<div
+	class={`${padding ? "my-8 sm:my-24" : ""} ${contained ? "" : "px-4 sm:px-6 md:px-8 2xl:px-0"} text-center `}
+>
+	<h2 class="mt-4 text-2xl/10 font-bold sm:mt-8 lg:text-[1.75rem]/16">{cardsTitle}</h2>
 	<div
-		class="mx-auto flex w-full max-w-6xl flex-col justify-evenly gap-4 py-8 sm:flex-row sm:gap-2 sm:py-12 md:gap-0"
+		class="mx-auto flex w-full max-w-6xl flex-col justify-evenly gap-4 py-6 sm:flex-row sm:gap-2 sm:py-12 md:gap-0"
 	>
 		{
 			cards.map((card, index) => (
@@ -43,10 +47,5 @@ const {
 			))
 		}
 	</div>
-	<Button
-		buttonText="Start Free Trial"
-		link="/signup/"
-		type="filled"
-		class="mx-auto my-6 w-44 py-5 text-xl lg:my-0"
-	/>
+	<Button buttonText="Start Free Trial" link="/signup/" type="filled" class="mx-auto w-44 py-5" />
 </div>
