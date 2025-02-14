@@ -136,7 +136,7 @@ const menu: { [key: string]: MenuItem }[] = [
 			</div>
 		</div>
 		<div
-			class="absolute top-16 left-0 z-50 hidden max-h-0 w-screen grow overflow-clip bg-white transition-all duration-500 ease-in-out md:static md:flex md:max-h-96 md:w-auto md:items-center md:overflow-visible md:bg-transparent md:shadow-none"
+			class="absolute top-16 left-0 z-50 hidden max-h-0 w-screen grow overflow-scroll bg-white transition-all duration-500 ease-in-out md:static md:flex md:max-h-96 md:w-auto md:items-center md:overflow-visible md:bg-transparent md:shadow-none"
 			id="menu"
 		>
 			<ul
@@ -161,12 +161,12 @@ const menu: { [key: string]: MenuItem }[] = [
 											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full md:block" />
 										</a>
 									) : (
-										<span class="item my-2 py-2 text-lg font-semibold whitespace-nowrap md:pb-0 md:font-medium">
+										<span class="item my-2 w-full py-2 text-lg font-semibold whitespace-nowrap md:pb-0 md:font-medium">
 											{key}
 											{value.values && (
 												<Icon
 													name="chevronDown"
-													class="inline transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180"
+													class="md:float-auto float-right inline transition-transform duration-300 ease-in-out group-hover:rotate-180 group-aria-expanded:rotate-180"
 												/>
 											)}
 											<div class="bg-orange mt-1.5 hidden h-[3px] w-0 transition-all duration-500 group-hover:w-full md:block" />
@@ -235,7 +235,15 @@ const menu: { [key: string]: MenuItem }[] = [
 						buttonText="Start Free Trial"
 						link="/signup/"
 						type="filled"
-						class="my-6 py-4 md:my-0 md:py-2"
+						class="my-6 w-52 py-4 md:my-0 md:py-2"
+					/>
+				</li>
+				<li class="md:hidden">
+					<Button
+						buttonText="Schedule a Demo"
+						link="/signup/"
+						type="filled"
+						class="bg-accent-darkblue mb-6 w-52 py-4"
 					/>
 				</li>
 			</ul>

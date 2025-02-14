@@ -14,11 +14,11 @@ const { border = true } = Astro.props;
 	<div
 		class={`mx-auto flex h-full max-w-7xl flex-col items-center justify-between gap-4 py-6 sm:p-6 lg:flex-row lg:gap-16 ${border ? "sm:p-0 sm:py-16" : "sm:p-0 sm:py-8"}`}
 	>
-		<p class="text-text-secondary text-sm sm:text-base">
+		<p class="text-text-secondary mt-4 text-sm sm:mt-0 sm:text-base">
 			Featured on top Apple & business news sources:
 		</p>
 		<ul
-			class="mx-auto flex max-w-7xl grow flex-col flex-wrap items-center justify-center gap-4 sm:flex-row lg:justify-start lg:gap-8 xl:justify-between"
+			class="mx-auto my-4 flex max-w-7xl grow flex-wrap items-center justify-center gap-4 sm:my-0 sm:flex-row lg:justify-start lg:gap-8 xl:justify-between"
 		>
 			{
 				Object.keys(imageModules).map(async (image) => {

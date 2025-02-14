@@ -58,10 +58,10 @@ const socialLinks = [
 const languages = ["Français", "Deutsch", "Español", "Nederlands"];
 ---
 
-<footer class="bg-background-light py-10">
+<footer class="bg-background-light px-6 py-10 lg:px-0">
 	<div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-4">
 		<div>
-			<h3 class="mb-2 font-bold">MARKETCIRCLE</h3>
+			<h3 class="mt-4 mb-2 font-bold sm:mt-0">MARKETCIRCLE</h3>
 			<ul class="space-y-2">
 				{
 					footerLinks["MARKETCIRCLE"].map((item) => (
@@ -73,7 +73,7 @@ const languages = ["Français", "Deutsch", "Español", "Nederlands"];
 					))
 				}
 			</ul>
-			<h3 class="mt-4 mb-2 font-bold">PARTNERS</h3>
+			<h3 class="mt-10 mb-2 font-bold sm:mt-0">PARTNERS</h3>
 			<ul class="space-y-2">
 				{
 					footerLinks["PARTNERS"].map((item) => (
@@ -90,7 +90,7 @@ const languages = ["Français", "Deutsch", "Español", "Nederlands"];
 			Object.entries(footerLinks).map(([title, links]) =>
 				title !== "MARKETCIRCLE" && title !== "PARTNERS" ? (
 					<div>
-						<h3 class="mb-2 font-bold">{title}</h3>
+						<h3 class="mt-4 mb-2 font-bold sm:mt-0">{title}</h3>
 						<ul class="space-y-2">
 							{links.map((item) => (
 								<li>
