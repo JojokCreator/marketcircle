@@ -8,10 +8,12 @@ interface Props {
 	color: string;
 	bg: string;
 	title: string;
+	smallText?: boolean;
 	header: string | { icon: string };
 	text?: string;
 	image?: ImageMetadata;
 	imageSide?: "left" | "right";
+	biggerImage?: boolean;
 	breakOut?: "left" | "right" | false;
 	button?: { link: string; text: string };
 	cards?: { title: string; text: string; icon: string }[];
@@ -20,11 +22,13 @@ interface Props {
 const {
 	isCol = false,
 	title,
+	smallText = false,
 	id,
 	header,
 	text,
 	image,
 	imageSide = "left",
+	biggerImage = false,
 	breakOut = false,
 	button,
 	cards,
@@ -35,15 +39,15 @@ const {
 ---
 
 <section
-	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-20 `}
+	class={`${bg} ${bg === "bg-background-dark" && "text-text-dark"} scroll-mt-20 w-screen overflow-clip 2xl:overflow-visible`}
 	id={id ? id : title.toLowerCase()}
 >
-	<div class={`sm:max-w-3xl md:max-w-7xl mx-auto py-8 sm:py-24 overflow-clip 2xl:overflow-visible`}>
+	<div class={`sm:max-w-3xl md:max-w-7xl mx-auto py-8 sm:py-24`}>
 		<div
 			class={`${isCol ? "md:flex md:flex-col" : "md:flex"} items-start ${imageSide === "left" ? "flex-row-reverse" : ""}`}
 		>
 			<div
-				class={`h-full flex flex-col justify-between gap-4 sm:gap-8 px-4 sm:px-6 md:px-8 2xl:px-0 ${breakOut ? "md:flex-shrink-0 md:max-w-[min(50vw,450px)] md:pt-10" : "max-w-[51rem] mx-auto py-8 md:py-12"}`}
+				class={`h-full flex flex-col justify-between gap-4 sm:gap-8 px-4 sm:px-6 md:px-8 2xl:px-0 ${breakOut ? "md:flex-shrink-0 md:max-w-[min(50vw,450px)] lg:max-w-[min(50vw,700px)] md:pt-10" : "max-w-[51rem] mx-auto py-8 md:py-12"}`}
 			>
 				<div>
 					{
@@ -54,10 +58,14 @@ const {
 								{header}
 							</p>
 						) : (
-							<Icon name={header.icon} size="72" />
+							<Icon name={header.icon} size="50" class="mb-2" />
 						)
 					}
-					<h2 class={`${color} inline-block text-transparent bg-clip-text`}>{title}</h2>
+					<h2
+						class={`${color.includes(" ") ? color + " inline-block text-transparent bg-clip-text" : color} ${smallText ? "!text-4xl lg:!text-5xl" : ""}`}
+					>
+						{title}
+					</h2>
 				</div>
 				{text && <p>{text}</p>}
 				<slot />
@@ -65,12 +73,12 @@ const {
 			{
 				image && (
 					<div
-						class={`${breakOut === "right" ? "break-right max-w-[700px] pl-4 sm:pl-0 md:max-w-auto md:min-w-3/4" : breakOut === "left" ? "break-left max-w-[700px] pr-4 sm:pr-0 md:max-w-auto md:min-w-3/4" : "mx-auto min-w-3/5"} mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-6xl" : ""} h-auto`}
+						class={`${breakOut === "right" ? "break-right max-w-[700px] pl-4 sm:pl-0 md:max-w-auto md:min-w-3/4" : breakOut === "left" ? "break-left max-w-[700px] pr-4 sm:pr-0 md:max-w-auto md:min-w-3/4" : `mx-auto ${biggerImage ? "min-w-full" : "min-w-[60rem]"}`} mt-4 md:mt-2 ${isCol ? "mx-auto md:max-w-6xl" : ""} h-auto`}
 					>
 						<Picture
 							src={image}
 							alt={title}
-							sizes="(max-width: 640px) 600pxvw, (max-width: 1280px) 80vw, 800px"
+							sizes={`"(max-width: 640px) ${biggerImage ? "1200px" : "994px"}, (max-width: 1280px) 80vw, 800px"`}
 							formats={["avif", "webp"]}
 							fallbackFormat="png"
 							widths={[600, 1200, image.width]}
